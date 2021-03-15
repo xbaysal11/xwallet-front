@@ -1,0 +1,13 @@
+@import "src/styles/base/colors.scss";
+
+.layout {
+  display: flex;
+  .layout__sidebar {
+    width: 180px;
+  }
+  .layout__content {
+    background: $main_background;
+    width: calc(100vw - 180px);
+    min-height: 100vh;
+  }
+}
