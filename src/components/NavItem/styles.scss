@@ -1,0 +1,55 @@
+@import "src/styles/base/colors.scss";
+
+.sidebar__item {
+  a {
+    color: $text_light_gray;
+    text-decoration: none;
+    font-weight: normal;
+
+    .nav_item {
+      .nav_item_inner {
+        margin: 16px 0;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+
+        .nav_item_icon {
+          width: 16px;
+          height: 16px;
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .nav_item_text {
+          p {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+            margin: 8px 32px;
+          }
+        }
+      }
+    }
+    &.active,
+    &:hover {
+      .nav_item {
+        .nav_item_inner {
+          border-right: 3px solid $dark_blue;
+          border-radius: 1.5px;
+
+          .nav_item_icon {
+            svg,
+            path {
+              stroke: $dark_blue;
+            }
+          }
+          .nav_item_text {
+            font-weight: bold !important;
+            color: $text_dark;
+          }
+        }
+      }
+    }
+  }
+}
