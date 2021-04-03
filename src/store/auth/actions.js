@@ -1,4 +1,4 @@
-import { urls } from "../../config";
+import { urls, toastOption } from "../../config";
 import { API } from "../../utils";
 import {
   AUTH_LOGIN_REQUEST,
@@ -9,6 +9,8 @@ import {
   AUTH_REGISTER_SUCCESS,
   AUTH_REGISTER_ERROR,
 } from "../actionTypes";
+
+import { toast } from "react-toastify";
 
 const setToken = (token) => {
   localStorage.setItem("token", token);
@@ -24,12 +26,14 @@ export const login = (data) => async (dispatch) => {
       setToken(token);
       localStorage.setItem("user", JSON.stringify(res.data));
       dispatch(authLoginSuccess(res.data));
+      toast.success("Successful!", toastOption);
       return res.data;
     })
     .catch((e) => {
       console.log("LOGIN", e.message);
       let errorMessage = "Неверные данные";
       dispatch(authLoginFailure(errorMessage));
+      toast.error("Error!", toastOption);
       return e;
     });
 };
@@ -44,12 +48,14 @@ export const register = (data) => async (dispatch) => {
       // setToken(token);
       // localStorage.setItem("user", JSON.stringify(res.data));
       dispatch(authRegisterSuccess(res.data));
+      toast.success("Successful!", toastOption);
       return res.data;
     })
     .catch((e) => {
       console.log("REGISTER", e.body);
       let errorMessage = "Something get wrong!";
       dispatch(authRegisterFailure(errorMessage));
+      toast.error("Error!", toastOption);
       return e;
     });
 };

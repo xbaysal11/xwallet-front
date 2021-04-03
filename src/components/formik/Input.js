@@ -5,19 +5,6 @@ import { Field, ErrorMessage } from "formik";
 import { SuccessInputIcon, ErrorInputIcon } from "../icons";
 import TextError from "./TextError";
 
-Input.propTypes = {
-  label: PT.string,
-  name: PT.string,
-  icon: PT.element,
-  form: PT.any,
-  field: PT.any,
-  placeholder: PT.any,
-  type: PT.any,
-  showIcon: PT.any,
-  hideIcon: PT.any,
-  changed: PT.any,
-  isValid: PT.any,
-};
 function Input(props) {
   const {
     label,
@@ -69,5 +56,17 @@ function Input(props) {
     </div>
   );
 }
-
+Input.propTypes = {
+  label: PT.string,
+  name: PT.string,
+  icon: PT.element,
+  form: PT.any,
+  field: PT.any,
+  placeholder: PT.any,
+  type: PT.any,
+  showIcon: PT.any,
+  hideIcon: PT.any,
+  changed: PT.any,
+  isValid: PT.any,
+};
 export default Input;

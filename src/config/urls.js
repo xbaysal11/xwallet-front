@@ -5,6 +5,6 @@ export { BASE_URL };
 
 export const LOGIN = `${BASE_URL}${API_PREFIX}/auth/login`;
 export const REGISTER = `${BASE_URL}${API_PREFIX}/auth/register`;
-export const USER_ME = `${BASE_URL}${API_PREFIX}/users/me/`;
+export const MONEY_OPERATION = `${BASE_URL}${API_PREFIX}/money-operation`;
 export const SCHOOLS = `${BASE_URL}${API_PREFIX}/schools/`;
 export const CANTEENS = `${BASE_URL}${API_PREFIX}/canteens/`;

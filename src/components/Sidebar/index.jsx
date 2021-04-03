@@ -7,7 +7,7 @@ import {
   StudentsPageIcon,
   ExitIcon,
   ProductsPageIcon,
-  TamakTimeIcon,
+  // TamakTimeIcon,
   CategoriesPageIcon,
 } from "../icons";
 import "./styles.scss";
@@ -32,7 +32,7 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebar__inner">
         <div className="sidebar__item sidebar__logo">
-          <TamakTimeIcon />
+          {/* <TamakTimeIcon /> */}
           <p>
             {user.firstName} {user.lastName}
           </p>

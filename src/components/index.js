@@ -6,4 +6,19 @@ import Layout from "./Layout";
 import Sidebar from "./Sidebar/";
 import NavItem from "./NavItem";
 
-export { Container, Layout, Sidebar, NavItem };
+// TABS
+import ExpenseTab from "./ExpenseTab";
+import IncomeTab from "./IncomeTab";
+import TransferTab from "./TransferTab";
+import MoneyOperationItem from "./MoneyOperationItem";
+
+export {
+  Container,
+  Layout,
+  Sidebar,
+  NavItem,
+  ExpenseTab,
+  MoneyOperationItem,
+  IncomeTab,
+  TransferTab,
+};
