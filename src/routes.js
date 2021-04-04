@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Login, Home, Register } from "./pages";
+import { Login, Home, Register, Wallets } from "./pages";
 import { Container, Layout } from "./components";
 
 export const useRoutes = (isAuthenticated) => {
@@ -10,6 +10,7 @@ export const useRoutes = (isAuthenticated) => {
         <Container>
           <Switch>
             <Route exact path={"/"} component={Home} />
+            <Route exact path={"/wallets"} component={Wallets} />
           </Switch>
         </Container>
       </Layout>

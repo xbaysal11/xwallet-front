@@ -12,6 +12,9 @@ import IncomeTab from "./IncomeTab";
 import TransferTab from "./TransferTab";
 import MoneyOperationItem from "./MoneyOperationItem";
 
+// WALLETS
+import WalletsItem from "./WalletsItem";
+
 export {
   Container,
   Layout,
@@ -21,4 +24,5 @@ export {
   MoneyOperationItem,
   IncomeTab,
   TransferTab,
+  WalletsItem,
 };
