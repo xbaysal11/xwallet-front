@@ -4,6 +4,7 @@ import Register from "./Register";
 
 import Home from "./Home";
 import Wallets from "./Wallets";
+import Categories from "./Categories";
 
 export {
   // LOGIN
@@ -11,4 +12,5 @@ export {
   Register,
   Home,
   Wallets,
+  Categories,
 };

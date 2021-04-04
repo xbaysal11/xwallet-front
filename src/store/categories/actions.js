@@ -1,5 +1,6 @@
 import { urls, toastOption } from "../../config";
 import { API } from "../../utils";
+import QS from "query-string";
 
 import { toast } from "react-toastify";
 import {
@@ -11,12 +12,10 @@ import {
   GET_CATEGORY_ERROR,
 } from "../actionTypes";
 
-export const getCategories = (page = 1) => async (dispatch) => {
-  let user = JSON.parse(localStorage.getItem("user"));
+export const getCategories = ({ filters = {} } = {}) => async (dispatch) => {
+  const qs = QS.stringify(filters);
   dispatch(getCategoriesRequest());
-  return API.get(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/?page=${page}`
-  )
+  return API.get(`${urls.CATEGORIES}/?${qs}`)
     .then((res) => {
       console.log(res.data);
       dispatch(getCategoriesSuccess(res.data));

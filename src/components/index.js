@@ -15,6 +15,9 @@ import MoneyOperationItem from "./MoneyOperationItem";
 // WALLETS
 import WalletsItem from "./WalletsItem";
 
+// CATEGORIES
+import CategoriesItem from "./CategoriesItem";
+
 export {
   Container,
   Layout,
@@ -25,4 +28,5 @@ export {
   IncomeTab,
   TransferTab,
   WalletsItem,
+  CategoriesItem,
 };
