@@ -18,6 +18,9 @@ import WalletsItem from "./WalletsItem";
 // CATEGORIES
 import CategoriesItem from "./CategoriesItem";
 
+// CAROUSEL
+import CardCarousel from "./CardCarousel";
+
 export {
   Container,
   Layout,
@@ -29,4 +32,5 @@ export {
   TransferTab,
   WalletsItem,
   CategoriesItem,
+  CardCarousel,
 };

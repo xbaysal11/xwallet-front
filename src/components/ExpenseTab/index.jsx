@@ -9,7 +9,6 @@ import { MoneyOperationItem } from "../../components";
 export default function ExpenseTab() {
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(
       getMoneyOperations({
@@ -38,7 +37,8 @@ export default function ExpenseTab() {
   return (
     <div>
       <h2>ExpenseTab</h2>
-      <h2>{tabContent}</h2>
+      <MoneyOperationItem key={0} test={"+++"} />
+      {tabContent}
     </div>
   );
 }
