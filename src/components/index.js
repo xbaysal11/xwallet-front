@@ -20,6 +20,8 @@ import CategoriesItem from "./CategoriesItem";
 
 // CAROUSEL
 import CardCarousel from "./CardCarousel";
+import CreateExpInc from "./CreateExpInc";
+import CreateTransfer from "./CreateTransfer";
 
 export {
   Container,
@@ -33,4 +35,6 @@ export {
   WalletsItem,
   CategoriesItem,
   CardCarousel,
+  CreateExpInc,
+  CreateTransfer,
 };

@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useSelector, useDispatch } from "react-redux";
 import { statuses } from "./../config";
+import { Link } from "react-router-dom";
 
 import {
   ExpenseTab,
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <div>
+      <Link to="/create-money-operation">create MO</Link>
       <h1>home</h1>
 
       {content}

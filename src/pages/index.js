@@ -9,6 +9,7 @@ import CreateCategory from "./CreateCategory";
 import UpdateCategory from "./UpdateCategory";
 import CreateWallet from "./CreateWallet";
 import UpdateWallet from "./UpdateWallet";
+import CreateMoneyOperation from "./CreateMoneyOperation";
 
 export {
   // LOGIN
@@ -21,4 +22,5 @@ export {
   UpdateCategory,
   CreateWallet,
   UpdateWallet,
+  CreateMoneyOperation,
 };

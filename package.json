@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "env-cmd": "^10.1.0",
     "formik": "^2.2.6",
+    "moment": "^2.29.1",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
     "react-addons-css-transition-group": "^15.6.2",

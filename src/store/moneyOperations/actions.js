@@ -29,26 +29,35 @@ export const getMoneyOperations = ({ filters = {} } = {}) => async (
 };
 
 export const createMoneyOperation = (values) => async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {};
-  values.map((item) => {
-    let itemData = {
-      name: item.name,
-      color: item.color,
-      icon: item.icon,
+  let data;
+  if (values.type === 3) {
+    data = {
+      comment: values.comment,
+      amount: values.amount,
+      date: values.date,
+      fromWalletId: values.fromWalletId,
+      toWalletId: values.toWalletId,
+      type: values.type,
     };
-    data = itemData;
-  });
-  return await API.post(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/`,
-    data
-  )
+  } else {
+    data = {
+      comment: values.comment,
+      amount: values.amount,
+      date: values.date,
+      walletId: values.walletId,
+      categoryId: values.categoryId,
+      type: values.type,
+    };
+  }
+
+  return await API.post(`${urls.MONEY_OPERATION}`, data)
     .then((res) => {
       console.log(res.data);
       if (res.status === 400) {
         toast.error(res.data, toastOption);
       }
       toast.success("Успешно добавлен !", toastOption);
+      return res.date;
     })
     .catch((error) => {
       console.log(error.response.data);
@@ -59,6 +68,7 @@ export const createMoneyOperation = (values) => async () => {
       } else {
         toast.error("Ошибка при добавлении !", toastOption);
       }
+      return error;
     });
 };
 
