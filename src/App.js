@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.scss";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
@@ -8,6 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 import { useRoutes } from "./routes";
 import ScrollToTop from "./ScrollToTop";
+import "./App.scss";
 // import { statuses } from "./config";
 
 const TITLE = "xWallet";

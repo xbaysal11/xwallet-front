@@ -19,34 +19,29 @@ export const getCategories = ({ filters = {} } = {}) => async (dispatch) => {
     .then((res) => {
       console.log(res.data);
       dispatch(getCategoriesSuccess(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       dispatch(getCategoriesFailure(error));
+      return error;
     });
 };
 
 export const createCategory = (values) => async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {};
-  values.map((item) => {
-    let itemData = {
-      name: item.name,
-      color: item.color,
-      icon: item.icon,
-    };
-    data = itemData;
-  });
-  return await API.post(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/`,
-    data
-  )
+  let data = {
+    name: values.name,
+    type: values.type,
+  };
+
+  return await API.post(`${urls.CATEGORIES}`, data)
     .then((res) => {
       console.log(res.data);
       if (res.status === 400) {
         toast.error(res.data, toastOption);
       }
       toast.success("Успешно добавлен !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error.response.data);
@@ -57,77 +52,54 @@ export const createCategory = (values) => async () => {
       } else {
         toast.error("Ошибка при добавлении !", toastOption);
       }
+      return error;
     });
 };
 
 export const deleteCategory = (id) => async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {
-    action: "delete",
-    categories: [{ id: id }],
-  };
-  return await API.put(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/`,
-    data
-  )
+  return await API.delete(`${urls.CATEGORIES}/${id}/`)
     .then((res) => {
       console.log(res.data);
       toast.success("Успешно удалено !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       toast.error("Ошибка при удалении !", toastOption);
+      return error;
     });
 };
 
 export const getCategoryById = (id) => async (dispatch) => {
-  let user = JSON.parse(localStorage.getItem("user"));
   dispatch(getCategoryRequest());
-  return API.get(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/${id}/`
-  )
+  return API.get(`${urls.CATEGORIES}/${id}/`)
     .then((res) => {
       dispatch(getCategorySuccess(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       dispatch(getCategorySuccess(error));
+      return error;
     });
 };
 
 export const updateCategory = (values, id) => () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {};
-  let pattern = new RegExp(
-    "^(https?:\\/\\/)?" +
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-      "((\\d{1,3}\\.){3}\\d{1,3}))" +
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-      "(\\?[;&a-z\\d%_.~+=-]*)?" +
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  );
-  values.map((item) => {
-    let itemData = {
-      name: item.name,
-      color: item.color,
-    };
-    if (item.icon && !pattern.test(item.icon)) {
-      itemData.icon = item.icon;
-    }
-    data = itemData;
-  });
-  return API.patch(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/${id}/`,
-    data
-  )
+  let data = {
+    name: values.name,
+    // type: values.type,
+  };
+
+  return API.put(`${urls.CATEGORIES}/${id}/`, data)
     .then((res) => {
       console.log(res.data);
       toast.success("Успешно сохранено !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       toast.error("Ошибка при сохранении !", toastOption);
+      return error;
     });
 };
 
