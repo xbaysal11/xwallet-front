@@ -185,7 +185,6 @@ html {
     .categories-item {
       padding: 24px;
       .category {
-        background-color: red;
         width: 160px;
         height: 140px;
         background: linear-gradient(109.61deg, #50b1f8 1.25%, #0a0d5a 100%);
@@ -204,6 +203,44 @@ html {
           }
         }
         .category-type {
+          p {
+            color: $white;
+            font-weight: lighter;
+            font-size: 12px;
+            line-height: 21px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.wallets {
+  .wallets-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .wallets-item {
+      padding: 24px;
+      .wallet {
+        width: 160px;
+        height: 140px;
+        background: linear-gradient(109.61deg, #50b1f8 1.25%, #0a0d5a 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        .wallet-name {
+          p {
+            color: $white;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+          }
+        }
+        .wallet-balance {
           p {
             color: $white;
             font-weight: lighter;

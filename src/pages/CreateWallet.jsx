@@ -1,12 +1,13 @@
 /* eslint-disable indent */
 import React, { useState } from "react";
 
-import { createCategory } from "./../store/categories/actions";
+import { createWallet } from "../store/wallets/actions";
 import { useDispatch } from "react-redux";
 
-export default function CreateCategory() {
+export default function CreateWallet() {
   const [name, setName] = useState("");
-  const [type, setType] = useState(1);
+  const [type, setType] = useState("");
+  const [balance, setBalance] = useState(0);
   const dispatch = useDispatch();
 
   const onTypeChangeHandler = (e) => {
@@ -14,26 +15,25 @@ export default function CreateCategory() {
   };
 
   const types = [
-    { name: "Expense", value: 1 },
-    { name: "Income", value: 2 },
-    { name: "Transfer", value: 3 },
+    { name: "Cash", value: "cash" },
+    { name: "Card", value: "card" },
   ];
   let typesInputList = types.map((item, idx) => (
     <input
       type="radio"
       key={idx}
       name="type"
-      id={`category-type-${item.value}`}
+      id={`wallet-type-${item.value}`}
       value={item.value}
       onChange={onTypeChangeHandler}
     />
   ));
 
   return (
-    <div className="categories">
-      <div className="categories-item">
-        <div className="category">
-          <div className="category-name">
+    <div className="wallets">
+      <div className="wallets-item">
+        <div className="wallet">
+          <div className="wallet-name">
             <p>{name}</p>
           </div>
         </div>
@@ -41,11 +41,17 @@ export default function CreateCategory() {
       <input
         type="text"
         value={name}
-        placeholder="Category name"
+        placeholder="wallet name"
         onChange={(e) => setName(e.target.value)}
       />
+      <input
+        type="text"
+        value={balance}
+        placeholder="wallet balance"
+        onChange={(e) => setBalance(e.target.value)}
+      />
       {typesInputList}
-      <button onClick={() => dispatch(createCategory({ name, type }))}>
+      <button onClick={() => dispatch(createWallet({ name, type, balance }))}>
         Create
       </button>
     </div>

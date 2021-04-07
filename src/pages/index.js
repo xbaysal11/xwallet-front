@@ -7,6 +7,8 @@ import Wallets from "./Wallets";
 import Categories from "./Categories";
 import CreateCategory from "./CreateCategory";
 import UpdateCategory from "./UpdateCategory";
+import CreateWallet from "./CreateWallet";
+import UpdateWallet from "./UpdateWallet";
 
 export {
   // LOGIN
@@ -17,4 +19,6 @@ export {
   Categories,
   CreateCategory,
   UpdateCategory,
+  CreateWallet,
+  UpdateWallet,
 };

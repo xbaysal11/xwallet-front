@@ -15,38 +15,33 @@ export const getWallets = ({ filters = {} } = {}) => async (dispatch) => {
   const qs = QS.stringify(filters);
 
   dispatch(getWalletsRequest());
-  return API.get(`${urls.WALLETS}/?${qs}`)
+  return await API.get(`${urls.WALLETS}/?${qs}`)
     .then((res) => {
       console.log(res);
       dispatch(getWalletsSuccess(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       dispatch(getWalletsFailure(error));
+      return error;
     });
 };
 
 export const createWallet = (values) => async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {};
-  values.map((item) => {
-    let itemData = {
-      name: item.name,
-      color: item.color,
-      icon: item.icon,
-    };
-    data = itemData;
-  });
-  return await API.post(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/`,
-    data
-  )
+  let data = {
+    name: values.name,
+    type: values.type,
+    balance: values.balance,
+  };
+  return await API.post(`${urls.WALLETS}`, data)
     .then((res) => {
       console.log(res.data);
       if (res.status === 400) {
         toast.error(res.data, toastOption);
       }
       toast.success("Успешно добавлен !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error.response.data);
@@ -57,77 +52,55 @@ export const createWallet = (values) => async () => {
       } else {
         toast.error("Ошибка при добавлении !", toastOption);
       }
+      return error;
     });
 };
 
 export const deleteWallet = (id) => async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {
-    action: "delete",
-    categories: [{ id: id }],
-  };
-  return await API.put(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/`,
-    data
-  )
+  return await API.delete(`${urls.WALLETS}/${id}/`)
     .then((res) => {
       console.log(res.data);
       toast.success("Успешно удалено !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       toast.error("Ошибка при удалении !", toastOption);
+      return error;
     });
 };
 
 export const getWalletById = (id) => async (dispatch) => {
-  let user = JSON.parse(localStorage.getItem("user"));
   dispatch(getCategoryRequest());
-  return API.get(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/${id}/`
-  )
+  return await API.get(`${urls.WALLETS}/${id}/`)
+
     .then((res) => {
       dispatch(getCategorySuccess(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       dispatch(getCategorySuccess(error));
+      return error;
     });
 };
 
-export const updateWallet = (values, id) => () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {};
-  let pattern = new RegExp(
-    "^(https?:\\/\\/)?" +
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-      "((\\d{1,3}\\.){3}\\d{1,3}))" +
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-      "(\\?[;&a-z\\d%_.~+=-]*)?" +
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  );
-  values.map((item) => {
-    let itemData = {
-      name: item.name,
-      color: item.color,
-    };
-    if (item.icon && !pattern.test(item.icon)) {
-      itemData.icon = item.icon;
-    }
-    data = itemData;
-  });
-  return API.patch(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/${id}/`,
-    data
-  )
+export const updateWallet = (values, id) => async () => {
+  let data = {
+    name: values.name,
+    balance: values.balance,
+  };
+
+  return await API.put(`${urls.WALLETS}/${id}/`, data)
     .then((res) => {
       console.log(res.data);
       toast.success("Успешно сохранено !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       toast.error("Ошибка при сохранении !", toastOption);
+      return error;
     });
 };
 

@@ -15,7 +15,7 @@ import {
 export const getCategories = ({ filters = {} } = {}) => async (dispatch) => {
   const qs = QS.stringify(filters);
   dispatch(getCategoriesRequest());
-  return API.get(`${urls.CATEGORIES}/?${qs}`)
+  return await API.get(`${urls.CATEGORIES}/?${qs}`)
     .then((res) => {
       console.log(res.data);
       dispatch(getCategoriesSuccess(res.data));

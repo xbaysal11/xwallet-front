@@ -1,14 +1,22 @@
 import React from "react";
 import PT from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function WalletsItem(props) {
-  const { test } = props;
+  const { values } = props;
   return (
-    <div>
-      <h1>{test}</h1>
-    </div>
+    <Link to={`/wallets/${values.id}`}>
+      <div className="wallet">
+        <div className="wallet-name">
+          <p>{values.name}</p>
+        </div>
+        <div className="wallet-balance">
+          <p>{values.balance}</p>
+        </div>
+      </div>
+    </Link>
   );
 }
 WalletsItem.propTypes = {
-  test: PT.string,
+  values: PT.object,
 };

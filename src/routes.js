@@ -8,6 +8,8 @@ import {
   Categories,
   CreateCategory,
   UpdateCategory,
+  CreateWallet,
+  UpdateWallet,
 } from "./pages";
 import { Container, Layout } from "./components";
 
@@ -19,13 +21,19 @@ export const useRoutes = (isAuthenticated) => {
           <Switch>
             <Route exact path={"/"} component={Home} />
             <Route exact path={"/wallets"} component={Wallets} />
-            <Route exact path={"/categories"} component={Categories} />
-            <Route exact path={"/categories/:id"} component={UpdateCategory} />
             <Route
-              // exact
+              exact
+              path={"/wallets/create-wallet"}
+              component={CreateWallet}
+            />
+            <Route exact path={"/wallets/:id"} component={UpdateWallet} />
+            <Route exact path={"/categories"} component={Categories} />
+            <Route
+              exact
               path={"/categories/create-category"}
               component={CreateCategory}
             />
+            <Route exact path={"/categories/:id"} component={UpdateCategory} />
           </Switch>
         </Container>
       </Layout>

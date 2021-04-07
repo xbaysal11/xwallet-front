@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { CategoriesItem } from "../components";
 
-// import { login, authRegisterRequest } from "../store/auth/actions";
 import { getCategories } from "./../store/categories/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { statuses } from "./../config";
@@ -15,7 +14,6 @@ export default function Categories() {
   useEffect(() => {
     dispatch(getCategories());
   }, []);
-  console.log(store);
   const addButton = (
     <Link to="/categories/create-category">
       <div className="categories-item">
