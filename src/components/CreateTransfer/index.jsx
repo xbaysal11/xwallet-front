@@ -1,10 +1,14 @@
 /* eslint-disable indent */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PT from "prop-types";
 import moment from "moment";
 
 import { createMoneyOperation } from "../../store/moneyOperations/actions";
-import { useDispatch } from "react-redux";
+import { getWallets } from "../../store/wallets/actions";
+
+import { useSelector, useDispatch } from "react-redux";
+import { Carousel } from "../../components";
+import { statuses } from "../../config";
 
 export default function CreateTransfer(props) {
   const { values } = props;
@@ -14,17 +18,44 @@ export default function CreateTransfer(props) {
   const [fromWalletId, setFromWalletId] = useState("");
   const [toWalletId, setToWalletId] = useState("");
   const [date, setDate] = useState(moment().toISOString());
+  const store = useSelector((store) => store);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getWallets());
+  }, []);
+
+  let fromWalletsCarousel, toWalletsCarousel;
+  const wallets = store.wallets.wallets;
+  wallets.status === statuses.SUCCESS
+    ? (fromWalletsCarousel = (
+        <Carousel
+          items={wallets.wallets.wallet}
+          active={0}
+          onChange={setFromWalletId}
+          type="wallets"
+        />
+      ))
+    : wallets.status === statuses.LOADING
+    ? (fromWalletsCarousel = <h2>loading</h2>)
+    : (fromWalletsCarousel = <h2>no data</h2>);
+
+  wallets.status === statuses.SUCCESS
+    ? (toWalletsCarousel = (
+        <Carousel
+          items={wallets.wallets.wallet}
+          active={0}
+          onChange={setToWalletId}
+          type="wallets"
+        />
+      ))
+    : wallets.status === statuses.LOADING
+    ? (toWalletsCarousel = <h2>loading</h2>)
+    : (toWalletsCarousel = <h2>no data</h2>);
   return (
     <div className="money_operations">
-      <div className="money_operations-item">
-        <div className="money_operation">
-          <div className="money_operation-name">
-            <p>{comment}</p>
-          </div>
-        </div>
-      </div>
+      {fromWalletsCarousel}
+      {toWalletsCarousel}
       <input
         type="datetime-local"
         value={moment(date).format("YYYY-MM-DDTHH:mm")}

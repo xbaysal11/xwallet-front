@@ -1,14 +1,26 @@
 // @import url("https://fonts.googleapis.com/css?family=Lobster");
 
 #carousel {
-  position: absolute;
-  height: 500px;
-  width: 950px;
-  margin: auto;
+  height: 220px;
+  width: 100%;
+  margin: 40px auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+#carousel-inner {
+  height: 220px;
+  width: 100%;
+  // margin: 40px auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: relative;
 }
 
 .arrow {
@@ -23,79 +35,80 @@
   font-size: 20px;
   color: #228291;
   line-height: 30px;
-  margin-top: 85px;
+  // margin-top: 85px;
   z-index: 1000;
 }
 
 .arrow-right {
-  left: 980px;
+  right: 0;
 }
 
 .item {
   text-align: center;
   color: white;
-  font-size: 40px;
+  font-size: 20px;
   position: absolute;
   transition: height 1s, width 1s, left 1s, margin-top 1s, line-height 1s,
     background-color 1s;
 }
 
-$level2-height: 10px;
-$level2-width: 10px;
+$level2-height: 160px;
+$level2-width: 260px;
 $level1-height: 160px;
 $level1-width: 260px;
 $level0-height: 200px;
 $level0-width: 330px;
 
-$level-2-left: 650px;
-$level-1-left: 750px;
-$level0-left: 380px;
-$level1-left:100px;
-$level2-left: 10px;
+$level-2-left: 700px;
+$level-1-left: 700px;
+$level0-left: 340px;
+$level1-left: 50px;
+$level2-left: 50px;
 
-// .level-2 {
-//   height: $level2-height;
-//   width: $level2-width;
-//   line-height: $level2-height;
-//   background-color: #228291;
-//   left: $level-2-left;
-//   margin-top: 25px;
-// }
+.level-2 {
+  height: $level2-height;
+  width: $level2-width;
+  // line-height: $level2-height;
+  background-color: #228291;
+  left: $level-2-left;
+  margin-top: 25px;
+}
 
 .level-1 {
   height: $level1-height;
   width: $level1-width;
-  line-height: $level1-height;
+  // line-height: $level1-height;
   background-color: #6796e5;
   left: $level-1-left;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .level0 {
   height: $level0-height;
   width: $level0-width;
-  line-height: $level0-height;
+  // line-height: $level0-height;
   background-color: #4ec9e1;
   left: $level0-left;
+  margin-top: 10px;
 }
 
 .level1 {
   height: $level1-height;
   width: $level1-width;
-  line-height: $level1-height;
+  // line-height: $level1-height;
   background-color: #6796e5;
-  margin-top: 10px;
+  margin-top: 25px;
   left: $level1-left;
 }
 
-// .level2 {
-//   height: $level2-height;
-//   width: $level2-width;
-//   line-height: $level2-height;
-//   background-color: #228291;
-//   margin-top: 25px;
-//   left: $level2-left;
-// }
+.level2 {
+  height: $level2-height;
+  width: $level2-width;
+  // line-height: $level2-height;
+  background-color: #228291;
+  margin-top: 25px;
+  left: $level2-left;
+}
 
 .left-enter {
   opacity: 0;

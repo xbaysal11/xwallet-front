@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import CardItem from "./CardItem";
+import CardCarouselItem from "../CardCarouselItem";
+import CategoryCarouselItem from "../CategoryCarouselItem";
 import PT from "prop-types";
 import "./styles.scss";
 
-export default class CardCarousel extends Component {
+export default class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,13 +19,18 @@ export default class CardCarousel extends Component {
   static propTypes = {
     items: PT.any,
     active: PT.number,
+    type: PT.string,
     setActive: PT.func,
+    onChange: PT.func,
   };
 
   generateItems() {
     let items = [];
     let level;
     console.log(this.state.active + 1);
+    console.log(this.state.items[this.state.active].id);
+    this.props.onChange(this.state.items[this.state.active].id);
+
     for (let i = this.state.active - 1; i < this.state.active + 2; i++) {
       let index = i;
       if (i < 0) {
@@ -33,9 +39,25 @@ export default class CardCarousel extends Component {
         index = i % this.state.items.length;
       }
       level = this.state.active - i;
-      items.push(
-        <CardItem key={index} id={this.state.items[index].name} level={level} />
-      );
+      if (this.props.type === "categories") {
+        items.push(
+          <CategoryCarouselItem
+            key={index}
+            id={this.state.items[index].name}
+            level={level}
+            data={this.state.items[index]}
+          />
+        );
+      } else if (this.props.type === "wallets") {
+        items.push(
+          <CardCarouselItem
+            key={index}
+            id={this.state.items[index].name}
+            level={level}
+            data={this.state.items[index]}
+          />
+        );
+      }
     }
     return items;
   }
@@ -63,9 +85,14 @@ export default class CardCarousel extends Component {
         <div className="arrow arrow-left" onClick={this.leftClick}>
           <i className="fi-arrow-left">{"<"}</i>
         </div>
-        <ReactCSSTransitionGroup transitionName={this.state.direction}>
-          {this.generateItems()}
-        </ReactCSSTransitionGroup>
+        <div id="carousel-inner">
+          <ReactCSSTransitionGroup transitionName={this.state.direction}>
+            <>
+              {this.generateItems()}
+              {/* <CardItem id="add-wallet" level={this.state.active} /> */}
+            </>
+          </ReactCSSTransitionGroup>
+        </div>
         <div className="arrow arrow-right" onClick={this.rightClick}>
           <i className="fi-arrow-right">{">"}</i>
         </div>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PT from "prop-types";
-import "./styles.scss";
+import "../Carousel/styles.scss";
 
-export default class CardItem extends Component {
+export default class CategoryCarouselItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,13 +12,16 @@ export default class CardItem extends Component {
   static propTypes = {
     level: PT.string,
     id: PT.number,
+    data: PT.any,
   };
   render() {
     const className = "item level" + this.props.level;
     return (
       <>
-        <div className={className}>{this.props.id}</div>
-        {/* <p>safa</p> */}
+        <div className={className}>
+          <p>{this.props.id}</p>
+          <p>{this.props.data.type}</p>
+        </div>
       </>
     );
   }

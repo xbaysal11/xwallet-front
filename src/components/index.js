@@ -19,7 +19,7 @@ import WalletsItem from "./WalletsItem";
 import CategoriesItem from "./CategoriesItem";
 
 // CAROUSEL
-import CardCarousel from "./CardCarousel";
+import Carousel from "./Carousel";
 import CreateExpInc from "./CreateExpInc";
 import CreateTransfer from "./CreateTransfer";
 
@@ -34,7 +34,7 @@ export {
   TransferTab,
   WalletsItem,
   CategoriesItem,
-  CardCarousel,
+  Carousel,
   CreateExpInc,
   CreateTransfer,
 };
