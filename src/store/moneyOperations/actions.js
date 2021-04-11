@@ -6,9 +6,9 @@ import {
   GET_MONEY_OPERATIONS_REQUEST,
   GET_MONEY_OPERATIONS_SUCCESS,
   GET_MONEY_OPERATIONS_ERROR,
-  GET_CATEGORY_REQUEST,
-  GET_CATEGORY_SUCCESS,
-  GET_CATEGORY_ERROR,
+  GET_MONEY_OPERATION_REQUEST,
+  GET_MONEY_OPERATION_SUCCESS,
+  GET_MONEY_OPERATION_ERROR,
 } from "../actionTypes";
 
 export const getMoneyOperations = ({ filters = {} } = {}) => async (
@@ -19,12 +19,14 @@ export const getMoneyOperations = ({ filters = {} } = {}) => async (
   dispatch(getMoneyOperationsRequest());
   return API.get(`${urls.MONEY_OPERATION}/?${qs}`)
     .then((res) => {
-      console.log(res);
+      console.log(res.data);
       dispatch(getMoneyOperationsSuccess(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       dispatch(getMoneyOperationsFailure(error));
+      return error;
     });
 };
 
@@ -73,73 +75,50 @@ export const createMoneyOperation = (values) => async () => {
 };
 
 export const deleteMoneyOperation = (id) => async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {
-    action: "delete",
-    categories: [{ id: id }],
-  };
-  return await API.put(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/`,
-    data
-  )
+  return await API.delete(`${urls.MONEY_OPERATION}/${id}`)
     .then((res) => {
       console.log(res.data);
       toast.success("Успешно удалено !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       toast.error("Ошибка при удалении !", toastOption);
+      return error;
     });
 };
 
 export const getMoneyOperationById = (id) => async (dispatch) => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  dispatch(getCategoryRequest());
-  return API.get(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/${id}/`
-  )
+  dispatch(getMoneyOperationRequest());
+  return API.get(`${urls.MONEY_OPERATION}/${id}`)
     .then((res) => {
-      dispatch(getCategorySuccess(res.data));
+      dispatch(getMoneyOperationSuccess(res.data));
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
-      dispatch(getCategorySuccess(error));
+      dispatch(getMoneyOperationSuccess(error));
+      return error;
     });
 };
 
-export const updateMoneyOperation = (values, id) => () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let data = {};
-  let pattern = new RegExp(
-    "^(https?:\\/\\/)?" +
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-      "((\\d{1,3}\\.){3}\\d{1,3}))" +
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-      "(\\?[;&a-z\\d%_.~+=-]*)?" +
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  );
-  values.map((item) => {
-    let itemData = {
-      name: item.name,
-      color: item.color,
-    };
-    if (item.icon && !pattern.test(item.icon)) {
-      itemData.icon = item.icon;
-    }
-    data = itemData;
-  });
-  return API.patch(
-    `${urls.CANTEENS}${user.canteen_roles[0].canteen.id}/product/categories/${id}/`,
-    data
-  )
+export const updateMoneyOperation = (values, id) => async () => {
+  let data = {
+    comment: values.comment,
+    amount: values.amount,
+    date: values.date,
+  };
+
+  return await API.put(`${urls.MONEY_OPERATION}/${id}`, data)
     .then((res) => {
       console.log(res.data);
       toast.success("Успешно сохранено !", toastOption);
+      return res.data;
     })
     .catch((error) => {
       console.log(error);
       toast.error("Ошибка при сохранении !", toastOption);
+      return error;
     });
 };
 
@@ -163,22 +142,22 @@ export const getMoneyOperationsFailure = (error) => {
   };
 };
 
-export const getCategoryRequest = () => {
+export const getMoneyOperationRequest = () => {
   return {
-    type: GET_CATEGORY_REQUEST,
+    type: GET_MONEY_OPERATION_REQUEST,
   };
 };
 
-export const getCategorySuccess = (data) => {
+export const getMoneyOperationSuccess = (data) => {
   return {
-    type: GET_CATEGORY_SUCCESS,
+    type: GET_MONEY_OPERATION_SUCCESS,
     payload: data,
   };
 };
 
-export const getCategoryFailure = (error) => {
+export const getMoneyOperationFailure = (error) => {
   return {
-    type: GET_CATEGORY_ERROR,
+    type: GET_MONEY_OPERATION_ERROR,
     payload: error,
   };
 };

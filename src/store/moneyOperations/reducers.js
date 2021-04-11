@@ -14,8 +14,8 @@ const moneyOperationsState = {
   status: statuses.INITIAL,
   error: "",
 };
-const categoryState = {
-  category: [],
+const moneyOperationState = {
+  moneyOperation: [],
   status: statuses.INITIAL,
   error: "",
 };
@@ -52,26 +52,26 @@ export const moneyOperationsListReducer = (
   }
 };
 
-export const categoryReducer = (state = categoryState, action) => {
+export const moneyOperationReducer = (state = moneyOperationState, action) => {
   switch (action.type) {
     case GET_CATEGORY_REQUEST:
       return {
         ...state,
-        category: [],
+        moneyOperation: [],
         status: statuses.LOADING,
         error: "",
       };
     case GET_CATEGORY_SUCCESS:
       return {
         ...state,
-        category: action.payload,
+        moneyOperation: action.payload,
         status: statuses.SUCCESS,
         error: "",
       };
     case GET_CATEGORY_ERROR:
       return {
         ...state,
-        category: [],
+        moneyOperation: [],
         error: action.payload,
         status: statuses.ERROR,
       };
@@ -83,5 +83,5 @@ export const categoryReducer = (state = categoryState, action) => {
 
 export const moneyOperationsReducer = combineReducers({
   moneyOperations: moneyOperationsListReducer,
-  category: categoryReducer,
+  moneyOperation: moneyOperationReducer,
 });

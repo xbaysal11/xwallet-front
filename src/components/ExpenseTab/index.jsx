@@ -24,7 +24,7 @@ export default function ExpenseTab() {
   const moneyOperations = store.moneyOperations.moneyOperations;
   moneyOperations.status === statuses.SUCCESS
     ? (tabContent = moneyOperations.moneyOperations.map((item, idx) => (
-        <MoneyOperationItem key={idx} test={item.amount} />
+        <MoneyOperationItem key={idx} values={item} />
         // <div key={idx}>
         //   <span>{item.amount}</span>
         //   <br />
@@ -35,10 +35,9 @@ export default function ExpenseTab() {
     : (tabContent = <h2>no data</h2>);
 
   return (
-    <div>
-      <h2>ExpenseTab</h2>
-      <MoneyOperationItem key={0} test={"+++"} />
-      {tabContent}
+    <div className="home">
+      {/* <h2>ExpenseTab</h2> */}
+      <div className="money_operations-list">{tabContent}</div>
     </div>
   );
 }

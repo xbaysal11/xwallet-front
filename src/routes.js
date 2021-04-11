@@ -11,6 +11,7 @@ import {
   CreateWallet,
   UpdateWallet,
   CreateMoneyOperation,
+  UpdateMoneyOperation,
 } from "./pages";
 import { Container, Layout } from "./components";
 
@@ -23,8 +24,13 @@ export const useRoutes = (isAuthenticated) => {
             <Route exact path={"/"} component={Home} />
             <Route
               exact
-              path={"/create-money-operation"}
+              path={"/money-operations/create-money-operation"}
               component={CreateMoneyOperation}
+            />
+            <Route
+              exact
+              path={"/money-operations/:id"}
+              component={UpdateMoneyOperation}
             />
             <Route exact path={"/wallets"} component={Wallets} />
             <Route

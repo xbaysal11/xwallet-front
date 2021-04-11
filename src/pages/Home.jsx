@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <div>
-      <Link to="/create-money-operation">create MO</Link>
+      <Link to="/money-operations/create-money-operation">create MO</Link>
       <h1>home</h1>
       <Link to="/wallets/create-wallet">Add wallet</Link>
 

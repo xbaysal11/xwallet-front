@@ -10,6 +10,7 @@ import UpdateCategory from "./UpdateCategory";
 import CreateWallet from "./CreateWallet";
 import UpdateWallet from "./UpdateWallet";
 import CreateMoneyOperation from "./CreateMoneyOperation";
+import UpdateMoneyOperation from "./UpdateMoneyOperation";
 
 export {
   // LOGIN
@@ -23,4 +24,5 @@ export {
   CreateWallet,
   UpdateWallet,
   CreateMoneyOperation,
+  UpdateMoneyOperation,
 };

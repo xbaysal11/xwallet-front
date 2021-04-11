@@ -252,3 +252,27 @@ html {
     }
   }
 }
+
+.home {
+  .money_operations-list {
+    .money_operation {
+      width: 750px;
+      height: 100px;
+      background: #efeff4;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+      margin: 12px auto;
+      .money_operation-left {
+      }
+      .money_operation-right {
+        display: flex;
+        align-items: center;
+        p {
+          font-weight: bold;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
