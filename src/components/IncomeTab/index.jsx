@@ -38,7 +38,11 @@ export default function IncomeTab() {
           <RotateSpinner size={30} color="#157CE3" loading={true} />
         </div>
       ))
-    : (tabContent = <h2>no data</h2>);
+    : (tabContent = (
+        <div className="spinner-container">
+          <p>No Data</p>
+        </div>
+      ));
 
   return (
     <div className="home">

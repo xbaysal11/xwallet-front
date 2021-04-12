@@ -6,6 +6,8 @@ import { getCategories } from "./../store/categories/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { statuses } from "./../config";
 import { Link } from "react-router-dom";
+import { PlusIcon } from "../components/icons";
+import { RotateSpinner } from "react-spinners-kit";
 
 export default function Categories() {
   const store = useSelector((store) => store);
@@ -19,7 +21,10 @@ export default function Categories() {
       <div className="categories-item">
         <div className="category">
           <div className="category-name">
-            <p>+</p>
+            {/* <p>+</p> */}
+            <div className="plus-container">
+              <PlusIcon />
+            </div>
           </div>
         </div>
       </div>
@@ -35,7 +40,11 @@ export default function Categories() {
       ))),
       content.push(addButton))
     : categories.status === statuses.LOADING
-    ? (content = <h2>loading</h2>)
+    ? (content = (
+        <div className="spinner-container">
+          <RotateSpinner size={30} color="#157CE3" loading={true} />
+        </div>
+      ))
     : (content = addButton);
 
   return (
