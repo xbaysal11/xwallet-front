@@ -46,6 +46,7 @@ export const useRoutes = (isAuthenticated) => {
               component={CreateCategory}
             />
             <Route exact path={"/categories/:id"} component={UpdateCategory} />
+            <Redirect to={"/"} />
           </Switch>
         </Container>
       </Layout>

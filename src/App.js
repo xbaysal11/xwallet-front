@@ -27,7 +27,6 @@ function App() {
       <Router>
         <ScrollToTop>{routes}</ScrollToTop>
       </Router>
-      <a href="http://xwallet.herokuapp.com/api-docs/">doc</a>
     </div>
   );
 }

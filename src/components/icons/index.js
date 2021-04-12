@@ -52,7 +52,10 @@ import EmptyIcon1 from "./EmptyData/EmptyIcon1";
 import EmptyIcon2 from "./EmptyData/EmptyIcon2";
 import EmptyIcon3 from "./EmptyData/EmptyIcon3";
 
+import Logo24 from "./Logo24";
+
 export {
+  Logo24,
   DeactivateIcon,
   ActivateIcon,
   DeleteIcon,
