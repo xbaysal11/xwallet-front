@@ -7,6 +7,7 @@ import { statuses } from "./../config";
 import { Link } from "react-router-dom";
 
 import { ExpenseTab, IncomeTab, TransferTab, Carousel } from "../components";
+import { Up, Down, UpDown } from "../components/icons";
 import { getWallets } from "../store/wallets/actions";
 
 export default function Home() {
@@ -45,9 +46,18 @@ export default function Home() {
       {content}
       <Tabs>
         <TabList>
-          <Tab>ExpenseTab</Tab>
-          <Tab>IncomeTab</Tab>
-          <Tab>TransferTab</Tab>
+          <Tab>
+            <Up />
+            <span>Expenses</span>
+          </Tab>
+          <Tab>
+            <Down />
+            <span>Incomes</span>
+          </Tab>
+          <Tab>
+            <UpDown />
+            <span>Transfers</span>
+          </Tab>
         </TabList>
 
         <TabPanel>

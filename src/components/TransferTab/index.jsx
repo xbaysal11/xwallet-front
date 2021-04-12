@@ -5,6 +5,7 @@ import { getMoneyOperations } from "../../store/moneyOperations/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { statuses } from "../../config";
 import { MoneyOperationItem } from "..";
+import { RotateSpinner } from "react-spinners-kit";
 
 export default function TransferTab() {
   const store = useSelector((store) => store);
@@ -32,8 +33,16 @@ export default function TransferTab() {
         // </div>
       )))
     : moneyOperations.status === statuses.LOADING
-    ? (tabContent = <h2>loading</h2>)
-    : (tabContent = <h2>no data</h2>);
+    ? (tabContent = (
+        <div className="spinner-container">
+          <RotateSpinner size={30} color="#157CE3" loading={true} />
+        </div>
+      ))
+    : (tabContent = (
+        <div className="spinner-container">
+          <p>No Data</p>
+        </div>
+      ));
 
   return (
     <div className="home">

@@ -54,7 +54,15 @@ import EmptyIcon3 from "./EmptyData/EmptyIcon3";
 
 import Logo24 from "./Logo24";
 
+// Arrows
+import Up from "./Arrows/Up";
+import Down from "./Arrows/Down";
+import UpDown from "./Arrows/UpDown";
+
 export {
+  Up,
+  Down,
+  UpDown,
   Logo24,
   DeactivateIcon,
   ActivateIcon,

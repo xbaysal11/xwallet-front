@@ -12,26 +12,26 @@ export default function MoneyOperationItem(props) {
         {values.type === 3 ? (
           <div className="money_operation">
             <div className="money_operation-left">
-              <p>{values.comment}</p>
+              <h3>{values.comment}</h3>
               <p>
-                {values.fromWallet.name} {"=>"} {values.toWallet.name}
+                {values.fromWallet.name} {"→"} {values.toWallet.name}
               </p>
               <p>{moment(values.date).format("DD.MM.YYYY HH:mm")}</p>
             </div>
             <div className="money_operation-right">
-              <p>{values.amount}</p>
+              <h3>{values.amount}</h3>
             </div>
           </div>
         ) : (
           <div className="money_operation">
             <div className="money_operation-left">
-              <p>{values.comment}</p>
+              <h3>{values.comment}</h3>
               <p>{values.category.name}</p>
               <p>{values.wallet.name}</p>
               <p>{moment(values.date).format("DD.MM.YYYY HH:mm")}</p>
             </div>
             <div className="money_operation-right">
-              <p>{values.amount}</p>
+              <h3>{values.amount}</h3>
             </div>
           </div>
         )}
