@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { getWallets } from "./../store/wallets/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { statuses } from "./../config";
+import { RotateSpinner } from "react-spinners-kit";
+import { CardLogo, Logo24, PlusIcon } from "../components/icons";
 
 export default function Wallets() {
   const store = useSelector((store) => store);
@@ -18,8 +20,21 @@ export default function Wallets() {
     <Link to="/wallets/create-wallet">
       <div className="wallets-item">
         <div className="wallet">
-          <div className="wallet-name">
-            <p>+</p>
+          <div className="wallet-inner">
+            <div className="wallet-header">
+              <div className="wallet-label">
+                <Logo24 />
+                <span>xWallet</span>
+              </div>
+              <div className="wallet-logo">
+                <CardLogo />
+              </div>
+            </div>
+            <div className="wallet-body">
+              <div className="plus-container">
+                <PlusIcon />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -29,20 +44,28 @@ export default function Wallets() {
   let content;
   const wallets = store.wallets.wallets;
   wallets.status === statuses.SUCCESS
-    ? ((content = wallets.wallets.wallet.map((item, idx) => (
-        <div className="wallets-item" key={idx}>
-          <WalletsItem values={item} />
+    ? (content = (
+        <div className="wallets-list">
+          {wallets.wallets.wallet.map((item, idx) => (
+            <div className="wallets-item" key={idx}>
+              <WalletsItem values={item} />
+            </div>
+          ))}
+          {addButton}
         </div>
-      ))),
-      content.push(addButton))
+      ))
     : wallets.status === statuses.LOADING
-    ? (content = <h2>loading</h2>)
+    ? (content = (
+        <div className="spinner-container">
+          <RotateSpinner size={30} color="#157CE3" loading={true} />
+        </div>
+      ))
     : (content = addButton);
 
   return (
     <div className="wallets">
       <h2>Wallets</h2>
-      <div className="wallets-list">{content}</div>
+      {content}
     </div>
   );
 }

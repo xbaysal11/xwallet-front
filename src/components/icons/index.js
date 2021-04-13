@@ -59,7 +59,10 @@ import Up from "./Arrows/Up";
 import Down from "./Arrows/Down";
 import UpDown from "./Arrows/UpDown";
 
+import CardLogo from "./CardLogo";
+
 export {
+  CardLogo,
   Up,
   Down,
   UpDown,

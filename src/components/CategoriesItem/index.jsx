@@ -15,11 +15,13 @@ export default function CategoriesItem(props) {
   return (
     <Link to={`/categories/${values.id}`}>
       <div className="category">
-        <div className="category-name">
-          <p>{values.name}</p>
-        </div>
-        <div className="category-type">
-          <p>{typeName}</p>
+        <div className="category-inner">
+          <div className="category-name">
+            <p>{values.name}</p>
+          </div>
+          <div className="category-type">
+            <p>{typeName}</p>
+          </div>
         </div>
       </div>
     </Link>

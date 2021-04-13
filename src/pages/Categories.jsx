@@ -20,10 +20,11 @@ export default function Categories() {
     <Link to="/categories/create-category">
       <div className="categories-item">
         <div className="category">
-          <div className="category-name">
-            {/* <p>+</p> */}
-            <div className="plus-container">
-              <PlusIcon />
+          <div className="category-inner">
+            <div className="category-name">
+              <div className="plus-container">
+                <PlusIcon />
+              </div>
             </div>
           </div>
         </div>
@@ -33,12 +34,16 @@ export default function Categories() {
   let content;
   const categories = store.categories.categories;
   categories.status === statuses.SUCCESS
-    ? ((content = categories.categories.map((item, idx) => (
-        <div className="categories-item" key={idx}>
-          <CategoriesItem values={item} />
+    ? (content = (
+        <div className="categories-list">
+          {categories.categories.map((item, idx) => (
+            <div className="categories-item" key={idx}>
+              <CategoriesItem values={item} />
+            </div>
+          ))}
+          {addButton}
         </div>
-      ))),
-      content.push(addButton))
+      ))
     : categories.status === statuses.LOADING
     ? (content = (
         <div className="spinner-container">
@@ -50,7 +55,7 @@ export default function Categories() {
   return (
     <div className="categories">
       <h2>Categories</h2>
-      <div className="categories-list">{content}</div>
+      {content}
     </div>
   );
 }
