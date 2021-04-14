@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function MoneyOperationItem(props) {
   const { values } = props;
-  // console.log("asdaf", values.fromWallet);
   return (
     <div className="money_operation">
       <Link to={`/money-operations/${values.id}`}>

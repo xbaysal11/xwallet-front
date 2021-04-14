@@ -58,7 +58,7 @@ export const createMoneyOperation = (values) => async () => {
       if (res.status === 400) {
         toast.error(res.data, toastOption);
       }
-      toast.success("Успешно добавлен !", toastOption);
+      toast.success("Successfully added !", toastOption);
       return res.date;
     })
     .catch((error) => {
@@ -68,7 +68,7 @@ export const createMoneyOperation = (values) => async () => {
           toast.error(`${error.response.data[key]}`, toastOption);
         }
       } else {
-        toast.error("Ошибка при добавлении !", toastOption);
+        toast.error("Error when adding !", toastOption);
       }
       return error;
     });
@@ -78,12 +78,12 @@ export const deleteMoneyOperation = (id) => async () => {
   return await API.delete(`${urls.MONEY_OPERATION}/${id}`)
     .then((res) => {
       console.log(res.data);
-      toast.success("Успешно удалено !", toastOption);
+      toast.success("Successfully deleted !", toastOption);
       return res.data;
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Ошибка при удалении !", toastOption);
+      toast.error("Error during deletion!", toastOption);
       return error;
     });
 };
@@ -112,12 +112,12 @@ export const updateMoneyOperation = (values, id) => async () => {
   return await API.put(`${urls.MONEY_OPERATION}/${id}`, data)
     .then((res) => {
       console.log(res.data);
-      toast.success("Успешно сохранено !", toastOption);
+      toast.success("Saved successfully !", toastOption);
       return res.data;
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Ошибка при сохранении !", toastOption);
+      toast.error("Error when saving !", toastOption);
       return error;
     });
 };

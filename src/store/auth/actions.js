@@ -26,14 +26,14 @@ export const login = (data) => async (dispatch) => {
       setToken(token);
       localStorage.setItem("user", JSON.stringify(res.data));
       dispatch(authLoginSuccess(res.data));
-      toast.success("Successful!", toastOption);
+      toast.success("Welcome !", toastOption);
       return res.data;
     })
     .catch((e) => {
       console.log("LOGIN", e.message);
-      let errorMessage = "Неверные данные";
+      let errorMessage = "Incorrect email or password !";
       dispatch(authLoginFailure(errorMessage));
-      toast.error("Error!", toastOption);
+      toast.error("Incorrect email or password !", toastOption);
       return e;
     });
 };
@@ -44,11 +44,8 @@ export const register = (data) => async (dispatch) => {
   await API.post(urls.REGISTER, dataJSON)
     .then((res) => {
       console.log("REGISTER", res);
-      // let token = JSON.stringify(res.data.token);
-      // setToken(token);
-      // localStorage.setItem("user", JSON.stringify(res.data));
       dispatch(authRegisterSuccess(res.data));
-      toast.success("Successful!", toastOption);
+      toast.success("Registered successfully !", toastOption);
       return res.data;
     })
     .catch((e) => {

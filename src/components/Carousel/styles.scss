@@ -61,6 +61,21 @@
       // height: 100%;
     }
   }
+  .category {
+    // width: 100%;
+    // height: 100%;
+    // border: 2px solid #157ce3;
+    // border-radius: 16px;
+
+    &:hover {
+      border: none;
+      padding: 4px;
+    }
+    .category-inner {
+      // width: 100%;
+      // height: 100%;
+    }
+  }
 }
 
 $level2-height: 160px;

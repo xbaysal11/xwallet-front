@@ -9,8 +9,6 @@ import { CreateTransfer, CreateExpInc } from "../components";
 export default function CreateMoneyOperation() {
   return (
     <div>
-      <h1>Create MO</h1>
-
       <Tabs>
         <TabList>
           <Tab>

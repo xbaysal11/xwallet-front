@@ -17,12 +17,18 @@ export default class CategoryCarouselItem extends Component {
   render() {
     const className = "item level" + this.props.level;
     return (
-      <>
-        <div className={className}>
-          <p>{this.props.id}</p>
-          <p>{this.props.data.type}</p>
+      <div className={className}>
+        <div className="category">
+          <div className="category-inner">
+            <div className="category-name">
+              <p>{this.props.id}</p>
+            </div>
+            <div className="category-type">
+              <p>{this.props.data.type}</p>
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
 }

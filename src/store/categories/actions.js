@@ -40,7 +40,7 @@ export const createCategory = (values) => async () => {
       if (res.status === 400) {
         toast.error(res.data, toastOption);
       }
-      toast.success("Успешно добавлен !", toastOption);
+      toast.success("Successfully added !", toastOption);
       return res.data;
     })
     .catch((error) => {
@@ -50,7 +50,7 @@ export const createCategory = (values) => async () => {
           toast.error(`${error.response.data[key]}`, toastOption);
         }
       } else {
-        toast.error("Ошибка при добавлении !", toastOption);
+        toast.error("Error when adding !", toastOption);
       }
       return error;
     });
@@ -60,12 +60,12 @@ export const deleteCategory = (id) => async () => {
   return await API.delete(`${urls.CATEGORIES}/${id}/`)
     .then((res) => {
       console.log(res.data);
-      toast.success("Успешно удалено !", toastOption);
+      toast.success("Successfully deleted !", toastOption);
       return res.data;
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Ошибка при удалении !", toastOption);
+      toast.error("Error during deletion!", toastOption);
       return error;
     });
 };
@@ -93,12 +93,12 @@ export const updateCategory = (values, id) => () => {
   return API.put(`${urls.CATEGORIES}/${id}/`, data)
     .then((res) => {
       console.log(res.data);
-      toast.success("Успешно сохранено !", toastOption);
+      toast.success("Saved successfully !", toastOption);
       return res.data;
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Ошибка при сохранении !", toastOption);
+      toast.error("Error when saving !", toastOption);
       return error;
     });
 };
