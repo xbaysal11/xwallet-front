@@ -1,13 +1,16 @@
 /* eslint-disable indent */
 import React, { useEffect } from "react";
-import { CategoriesItem } from "../components";
-
-import { getCategories } from "./../store/categories/actions";
-import { useSelector, useDispatch } from "react-redux";
-import { statuses } from "./../config";
-import { Link } from "react-router-dom";
-import { PlusIcon } from "../components/icons";
 import { RotateSpinner } from "react-spinners-kit";
+import { Helmet } from "react-helmet";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { CategoriesItem } from "../components";
+import { getCategories } from "./../store/categories/actions";
+import { statuses } from "./../config";
+import { PlusIcon } from "../components/icons";
+
+const TITLE = "Categories - xWallet";
 
 export default function Categories() {
   const store = useSelector((store) => store);
@@ -53,9 +56,14 @@ export default function Categories() {
     : (content = addButton);
 
   return (
-    <div className="categories">
-      <h2>Categories</h2>
-      {content}
-    </div>
+    <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
+      <div className="categories">
+        <h2>Categories</h2>
+        {content}
+      </div>
+    </>
   );
 }

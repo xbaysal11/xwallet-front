@@ -1,13 +1,16 @@
 /* eslint-disable indent */
 import React, { useEffect } from "react";
-import { WalletsItem } from "../components";
 import { Link } from "react-router-dom";
-
-import { getWallets } from "./../store/wallets/actions";
-import { useSelector, useDispatch } from "react-redux";
-import { statuses } from "./../config";
+import { Helmet } from "react-helmet";
 import { RotateSpinner } from "react-spinners-kit";
+import { useSelector, useDispatch } from "react-redux";
+
+import { WalletsItem } from "../components";
+import { getWallets } from "./../store/wallets/actions";
+import { statuses } from "./../config";
 import { CardLogo, Logo24, PlusIcon } from "../components/icons";
+
+const TITLE = "Wallets - xWallet";
 
 export default function Wallets() {
   const store = useSelector((store) => store);
@@ -63,9 +66,14 @@ export default function Wallets() {
     : (content = addButton);
 
   return (
-    <div className="wallets">
-      <h2>Wallets</h2>
-      {content}
-    </div>
+    <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
+      <div className="wallets">
+        <h2>Wallets</h2>
+        {content}
+      </div>
+    </>
   );
 }

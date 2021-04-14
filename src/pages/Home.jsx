@@ -1,14 +1,17 @@
 /* eslint-disable indent */
 import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
 import { useSelector, useDispatch } from "react-redux";
-import { statuses } from "./../config";
+import { RotateSpinner } from "react-spinners-kit";
+import { Helmet } from "react-helmet";
 
+import "react-tabs/style/react-tabs.css";
+import { statuses } from "./../config";
 import { ExpenseTab, IncomeTab, TransferTab, Carousel } from "../components";
 import { Up, Down, UpDown } from "../components/icons";
 import { getWallets } from "../store/wallets/actions";
-import { RotateSpinner } from "react-spinners-kit";
+
+const TITLE = "Home - xWallet";
 
 export default function Home() {
   const [walletId, setWalletId] = useState("");
@@ -45,49 +48,54 @@ export default function Home() {
       ));
 
   return (
-    <div className="home">
-      <div className="home-header">
-        <div className="home-header-inner">
-          <div className="home-header-left">
-            <h3>Your total balance:</h3>
-          </div>
-          <div className="home-header-right">
-            <h1>
-              {store.wallets.wallets.wallets.total &&
-                store.wallets.wallets.wallets.total
-                  .toString()
-                  .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
-            </h1>
+    <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
+      <div className="home">
+        <div className="home-header">
+          <div className="home-header-inner">
+            <div className="home-header-left">
+              <h3>Your total balance:</h3>
+            </div>
+            <div className="home-header-right">
+              <h1>
+                {store.wallets.wallets.wallets.total &&
+                  store.wallets.wallets.wallets.total
+                    .toString()
+                    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+              </h1>
+            </div>
           </div>
         </div>
-      </div>
-      {content}
-      <Tabs>
-        <TabList>
-          <Tab>
-            <Up />
-            <span>Expenses</span>
-          </Tab>
-          <Tab>
-            <Down />
-            <span>Incomes</span>
-          </Tab>
-          <Tab>
-            <UpDown />
-            <span>Transfers</span>
-          </Tab>
-        </TabList>
+        {content}
+        <Tabs>
+          <TabList>
+            <Tab>
+              <Up />
+              <span>Expenses</span>
+            </Tab>
+            <Tab>
+              <Down />
+              <span>Incomes</span>
+            </Tab>
+            <Tab>
+              <UpDown />
+              <span>Transfers</span>
+            </Tab>
+          </TabList>
 
-        <TabPanel>
-          <ExpenseTab />
-        </TabPanel>
-        <TabPanel>
-          <IncomeTab />
-        </TabPanel>
-        <TabPanel>
-          <TransferTab />
-        </TabPanel>
-      </Tabs>
-    </div>
+          <TabPanel>
+            <ExpenseTab />
+          </TabPanel>
+          <TabPanel>
+            <IncomeTab />
+          </TabPanel>
+          <TabPanel>
+            <TransferTab />
+          </TabPanel>
+        </Tabs>
+      </div>
+    </>
   );
 }

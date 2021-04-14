@@ -1,13 +1,16 @@
 /* eslint-disable indent */
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import {
   getWalletById,
   updateWallet,
   deleteWallet,
 } from "../store/wallets/actions";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+
+const TITLE = "Update Wallet - xWallet";
 
 export default function UpdateWallet() {
   const dispatch = useDispatch();
@@ -25,34 +28,39 @@ export default function UpdateWallet() {
   }, []);
 
   return (
-    <div className="wallets">
-      <div className="wallets-item">
-        <div className="wallet">
-          <div className="wallet-name">
-            <p>{name}</p>
-          </div>
-          <div className="wallet-balance">
-            <p>{balance}</p>
+    <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
+      <div className="wallets">
+        <div className="wallets-item">
+          <div className="wallet">
+            <div className="wallet-name">
+              <p>{name}</p>
+            </div>
+            <div className="wallet-balance">
+              <p>{balance}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <input
-        type="text"
-        value={name}
-        placeholder="Category name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        value={balance}
-        placeholder="Category balance"
-        onChange={(e) => setBalance(e.target.value)}
-      />
-      <button onClick={() => dispatch(updateWallet({ name, balance }, id))}>
-        Update
-      </button>
+        <input
+          type="text"
+          value={name}
+          placeholder="Category name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={balance}
+          placeholder="Category balance"
+          onChange={(e) => setBalance(e.target.value)}
+        />
+        <button onClick={() => dispatch(updateWallet({ name, balance }, id))}>
+          Update
+        </button>
 
-      <button onClick={() => dispatch(deleteWallet(id))}>Delete</button>
-    </div>
+        <button onClick={() => dispatch(deleteWallet(id))}>Delete</button>
+      </div>
+    </>
   );
 }

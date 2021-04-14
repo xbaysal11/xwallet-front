@@ -1,8 +1,11 @@
 /* eslint-disable indent */
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+import { useDispatch } from "react-redux";
 
 import { createCategory } from "./../store/categories/actions";
-import { useDispatch } from "react-redux";
+
+const TITLE = "Create Category - xWallet";
 
 export default function CreateCategory() {
   const [name, setName] = useState("");
@@ -35,31 +38,36 @@ export default function CreateCategory() {
   ));
 
   return (
-    <div className="categories">
-      <div className="categories-item">
-        <div className="category">
-          <div className="category-inner">
-            <div className="category-name">
-              <p>{name || "***"}</p>
-            </div>
-            <div className="category-type">
-              <p>{typeName}</p>
+    <>
+      <Helmet>
+        <title>{TITLE}</title>
+      </Helmet>
+      <div className="categories">
+        <div className="categories-item">
+          <div className="category">
+            <div className="category-inner">
+              <div className="category-name">
+                <p>{name || "***"}</p>
+              </div>
+              <div className="category-type">
+                <p>{typeName}</p>
+              </div>
             </div>
           </div>
         </div>
+        <div className="categories-item categories-inputs">
+          <input
+            type="text"
+            value={name}
+            placeholder="Category name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <div className="categories-inputs-radio">{typesInputList}</div>
+          <button onClick={() => dispatch(createCategory({ name, type }))}>
+            Create
+          </button>
+        </div>
       </div>
-      <div className="categories-item categories-inputs">
-        <input
-          type="text"
-          value={name}
-          placeholder="Category name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <div className="categories-inputs-radio">{typesInputList}</div>
-        <button onClick={() => dispatch(createCategory({ name, type }))}>
-          Create
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
