@@ -58,11 +58,15 @@ import Logo24 from "./Logo24";
 import Up from "./Arrows/Up";
 import Down from "./Arrows/Down";
 import UpDown from "./Arrows/UpDown";
+import Left from "./Arrows/Left";
+import Right from "./Arrows/Right";
 
 import CardLogo from "./CardLogo";
 
 export {
   CardLogo,
+  Left,
+  Right,
   Up,
   Down,
   UpDown,

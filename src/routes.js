@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, Link } from "react-router-dom";
 import {
   Login,
   Home,
@@ -14,6 +14,7 @@ import {
   UpdateMoneyOperation,
 } from "./pages";
 import { Container, Layout } from "./components";
+import { PlusIcon } from "./components/icons";
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -49,6 +50,13 @@ export const useRoutes = (isAuthenticated) => {
             <Redirect to={"/"} />
           </Switch>
         </Container>
+        <div className="floating-button">
+          <Link to="/money-operations/create-money-operation">
+            <div className="money_operation to-create">
+              <PlusIcon />
+            </div>
+          </Link>
+        </div>
       </Layout>
     );
   }

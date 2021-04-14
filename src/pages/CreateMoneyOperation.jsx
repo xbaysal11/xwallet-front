@@ -2,7 +2,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-// import { statuses } from "./../config";
+import { Up, Down, UpDown } from "../components/icons";
 
 import { CreateTransfer, CreateExpInc } from "../components";
 
@@ -13,9 +13,18 @@ export default function CreateMoneyOperation() {
 
       <Tabs>
         <TabList>
-          <Tab>ExpenseTab</Tab>
-          <Tab>IncomeTab</Tab>
-          <Tab>TransferTab</Tab>
+          <Tab>
+            <Up />
+            <span>Expenses</span>
+          </Tab>
+          <Tab>
+            <Down />
+            <span>Incomes</span>
+          </Tab>
+          <Tab>
+            <UpDown />
+            <span>Transfers</span>
+          </Tab>
         </TabList>
 
         <TabPanel>

@@ -26,10 +26,6 @@ export default function ExpenseTab() {
   moneyOperations.status === statuses.SUCCESS
     ? (tabContent = moneyOperations.moneyOperations.map((item, idx) => (
         <MoneyOperationItem key={idx} values={item} />
-        // <div key={idx}>
-        //   <span>{item.amount}</span>
-        //   <br />
-        // </div>
       )))
     : moneyOperations.status === statuses.LOADING
     ? (tabContent = (
@@ -45,7 +41,6 @@ export default function ExpenseTab() {
 
   return (
     <div className="home">
-      {/* <h2>ExpenseTab</h2> */}
       <div className="money_operations-list">{tabContent}</div>
     </div>
   );

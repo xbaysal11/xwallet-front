@@ -4,11 +4,11 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useSelector, useDispatch } from "react-redux";
 import { statuses } from "./../config";
-import { Link } from "react-router-dom";
 
 import { ExpenseTab, IncomeTab, TransferTab, Carousel } from "../components";
 import { Up, Down, UpDown } from "../components/icons";
 import { getWallets } from "../store/wallets/actions";
+import { RotateSpinner } from "react-spinners-kit";
 
 export default function Home() {
   const [walletId, setWalletId] = useState("");
@@ -33,16 +33,34 @@ export default function Home() {
         />
       ))
     : wallets.status === statuses.LOADING
-    ? (content = <h2>loading</h2>)
-    : (content = <h2>no data</h2>);
+    ? (content = (
+        <div className="spinner-container">
+          <RotateSpinner size={30} color="#157CE3" loading={true} />
+        </div>
+      ))
+    : (content = (
+        <div className="spinner-container">
+          <p>No Data</p>
+        </div>
+      ));
 
   return (
-    <div>
-      <Link to="/money-operations/create-money-operation">create MO</Link>
-      <h1>home</h1>
-      <Link to="/wallets/create-wallet">Add wallet</Link>
-
-      <h1>total: {store.wallets.wallets.wallets.total}</h1>
+    <div className="home">
+      <div className="home-header">
+        <div className="home-header-inner">
+          <div className="home-header-left">
+            <h3>Your total balance:</h3>
+          </div>
+          <div className="home-header-right">
+            <h1>
+              {store.wallets.wallets.wallets.total &&
+                store.wallets.wallets.wallets.total
+                  .toString()
+                  .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+            </h1>
+          </div>
+        </div>
+      </div>
       {content}
       <Tabs>
         <TabList>

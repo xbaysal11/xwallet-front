@@ -5,6 +5,8 @@ import CategoryCarouselItem from "../CategoryCarouselItem";
 import PT from "prop-types";
 import "./styles.scss";
 
+import { Right, Left } from "../icons/";
+
 export default class Carousel extends Component {
   constructor(props) {
     super(props);
@@ -83,18 +85,15 @@ export default class Carousel extends Component {
     return (
       <div id="carousel" className="noselect">
         <div className="arrow arrow-left" onClick={this.leftClick}>
-          <i className="fi-arrow-left">{"<"}</i>
+          <Left />
         </div>
         <div id="carousel-inner">
           <ReactCSSTransitionGroup transitionName={this.state.direction}>
-            <>
-              {this.generateItems()}
-              {/* <CardItem id="add-wallet" level={this.state.active} /> */}
-            </>
+            {this.generateItems()}
           </ReactCSSTransitionGroup>
         </div>
         <div className="arrow arrow-right" onClick={this.rightClick}>
-          <i className="fi-arrow-right">{">"}</i>
+          <Right />
         </div>
       </div>
     );

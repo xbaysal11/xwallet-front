@@ -7,10 +7,10 @@ export default function MoneyOperationItem(props) {
   const { values } = props;
   // console.log("asdaf", values.fromWallet);
   return (
-    <div>
+    <div className="money_operation">
       <Link to={`/money-operations/${values.id}`}>
         {values.type === 3 ? (
-          <div className="money_operation">
+          <div>
             <div className="money_operation-left">
               <h3>{values.comment}</h3>
               <p>
@@ -19,11 +19,16 @@ export default function MoneyOperationItem(props) {
               <p>{moment(values.date).format("DD.MM.YYYY HH:mm")}</p>
             </div>
             <div className="money_operation-right">
-              <h3>{values.amount}</h3>
+              <h3>
+                {values.amount &&
+                  values.amount
+                    .toString()
+                    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+              </h3>
             </div>
           </div>
         ) : (
-          <div className="money_operation">
+          <div>
             <div className="money_operation-left">
               <h3>{values.comment}</h3>
               <p>{values.category.name}</p>
@@ -31,7 +36,13 @@ export default function MoneyOperationItem(props) {
               <p>{moment(values.date).format("DD.MM.YYYY HH:mm")}</p>
             </div>
             <div className="money_operation-right">
-              <h3>{values.amount}</h3>
+              <h3>
+                {values.type === 1 ? "-" : "+"}{" "}
+                {values.amount &&
+                  values.amount
+                    .toString()
+                    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+              </h3>
             </div>
           </div>
         )}

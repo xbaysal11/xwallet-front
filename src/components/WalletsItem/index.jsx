@@ -25,7 +25,12 @@ export default function WalletsItem(props) {
             </div>
             <div className="wallet-balance">
               <p className="wallet-balance__title">Balance</p>
-              <p className="wallet-balance__text">{values.balance}</p>
+              <p className="wallet-balance__text">
+                {values.balance &&
+                  values.balance
+                    .toString()
+                    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+              </p>
             </div>
           </div>
         </div>
