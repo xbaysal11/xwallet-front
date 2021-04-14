@@ -3,11 +3,11 @@
 .layout {
   display: flex;
   .layout__sidebar {
-    width: 180px;
+    width: 256px;
   }
   .layout__content {
     background: $main_background;
-    width: calc(100vw - 180px);
+    width: calc(100vw - 256px);
     min-height: 100vh;
   }
 }

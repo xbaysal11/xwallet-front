@@ -52,7 +52,7 @@ export default function Home() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="home">
+      <div className="home page-content">
         <div className="home-header">
           <div className="home-header-inner">
             <div className="home-header-left">

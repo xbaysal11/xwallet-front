@@ -60,7 +60,7 @@ export default function Categories() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="categories">
+      <div className="categories page-content">
         <h2>Categories</h2>
         {content}
       </div>

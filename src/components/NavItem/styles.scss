@@ -23,10 +23,16 @@
         }
         .nav_item_text {
           p {
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 20px;
+            // font-weight: normal;
+            // font-size: 14px;
+            // line-height: 20px;
             margin: 8px 32px;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0.01em;
+
+            color: #334d6e;
           }
         }
       }
@@ -39,14 +45,23 @@
           border-radius: 1.5px;
 
           .nav_item_icon {
-            svg,
-            path {
+            svg > path {
               stroke: $dark_blue;
             }
           }
           .nav_item_text {
-            font-weight: bold !important;
-            color: $text_dark;
+            p {
+              // font-weight: normal;
+              // font-size: 14px;
+              // line-height: 20px;
+              margin: 8px 32px;
+              font-weight: bold;
+              font-size: 12px;
+              line-height: 16px;
+              letter-spacing: 0.01em;
+
+              color: #676eca;
+            }
           }
         }
       }

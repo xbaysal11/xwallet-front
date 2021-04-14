@@ -15,7 +15,7 @@ export default function CreateMoneyOperation() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div>
+      <div className="page-content">
         <Tabs>
           <TabList>
             <Tab>

@@ -36,7 +36,7 @@ export default function UpdateMoneyOperation() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="categories">
+      <div className="categories page-content">
         <div className="categories-item">
           <div className="money_operation">
             <div>

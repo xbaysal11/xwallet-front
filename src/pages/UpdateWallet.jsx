@@ -33,7 +33,7 @@ export default function UpdateWallet() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="wallets">
+      <div className="wallets page-content">
         <div className="wallets-item">
           <div className="wallet">
             <div className="wallet-inner">

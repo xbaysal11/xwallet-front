@@ -84,7 +84,7 @@ export default function CreateExpInc(props) {
       ));
 
   return (
-    <div className="money_operations">
+    <div className="money_operations page-content">
       {walletsCarousel}
       {categoriesCarousel}
 

@@ -3,6 +3,8 @@ import TamakTimeIcon from "./Sidebar/TamakTimeIcon";
 import GoBackIcon from "./PageTitle/GoBackIcon";
 
 // SIDEBAR
+import WalletsPageIcon from "./Sidebar/WalletsPageIcon";
+import HomePageIcon from "./Sidebar/HomePageIcon";
 import MainPageIcon from "./Sidebar/MainPageIcon";
 import StudentsPageIcon from "./Sidebar/StudentsPageIcon";
 import ReportsPageIcon from "./Sidebar/ReportsPageIcon";
@@ -53,6 +55,7 @@ import EmptyIcon2 from "./EmptyData/EmptyIcon2";
 import EmptyIcon3 from "./EmptyData/EmptyIcon3";
 
 import Logo24 from "./Logo24";
+import Logo46 from "./Logo46";
 
 // Arrows
 import Up from "./Arrows/Up";
@@ -64,6 +67,9 @@ import Right from "./Arrows/Right";
 import CardLogo from "./CardLogo";
 
 export {
+  WalletsPageIcon,
+  HomePageIcon,
+  Logo46,
   CardLogo,
   Left,
   Right,

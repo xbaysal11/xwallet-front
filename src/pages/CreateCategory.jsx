@@ -42,7 +42,7 @@ export default function CreateCategory() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="categories">
+      <div className="categories page-content">
         <div className="categories-item">
           <div className="category">
             <div className="category-inner">

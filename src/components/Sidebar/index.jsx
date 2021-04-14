@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/auth/actions";
 import { NavItem } from "..";
 import {
-  StaffPageIcon,
-  StudentsPageIcon,
+  ReportsPageIcon,
+  WalletsPageIcon,
   ExitIcon,
-  ProductsPageIcon,
-  // TamakTimeIcon,
+  HomePageIcon,
+  Logo46,
   CategoriesPageIcon,
 } from "../icons";
 import "./styles.scss";
@@ -31,28 +31,35 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__inner">
-        <div className="sidebar__item sidebar__logo">
-          {/* <TamakTimeIcon /> */}
-          <p>
-            {user.firstName} {user.lastName}
-          </p>
-          <p>{user.email}</p>
-          {/* <p>{store.auth.user}</p> */}
+        <div className="sidebar__item sidebar__header">
+          <div className="sidebar__logo">
+            <Logo46 />
+          </div>
+          <div className="sidebar__user-info">
+            <div className="sidebar__user-info__full-name">
+              <p>
+                {user.firstName} {user.lastName}
+              </p>
+            </div>
+            <div className="sidebar__user-info__email">
+              <p>{user.email}</p>
+            </div>
+          </div>
         </div>
         <div className="sidebar__item nav__list">
           <NavItem
             name="Home"
-            to={["/", "/home"]}
+            to={["/", "/home", "/money-operations"]}
             link="/"
-            icon={<ProductsPageIcon />}
+            icon={<HomePageIcon />}
           />
-          <NavItem name="Wallets" link="/wallets" icon={<StudentsPageIcon />} />
+          <NavItem name="Wallets" link="/wallets" icon={<WalletsPageIcon />} />
           <NavItem
             name="Categories"
             link="/categories"
             icon={<CategoriesPageIcon />}
           />
-          <NavItem name="Reports" link="/reports" icon={<StaffPageIcon />} />
+          <NavItem name="Reports" link="/reports" icon={<ReportsPageIcon />} />
         </div>
         <div className="sidebar__item sidebar__exit">
           <button

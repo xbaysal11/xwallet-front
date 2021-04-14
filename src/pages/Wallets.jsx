@@ -70,7 +70,7 @@ export default function Wallets() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="wallets">
+      <div className="wallets page-content">
         <h2>Wallets</h2>
         {content}
       </div>
