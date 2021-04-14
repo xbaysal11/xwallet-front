@@ -33,22 +33,31 @@ export default function UpdateCategory() {
       <div className="categories">
         <div className="categories-item">
           <div className="category">
-            <div className="category-name">
-              <p>{name}</p>
+            <div className="category-inner">
+              <div className="category-name">
+                <p>{name || "***"}</p>
+              </div>
             </div>
           </div>
         </div>
-        <input
-          type="text"
-          value={name}
-          placeholder="Category name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button onClick={() => dispatch(updateCategory({ name }, id))}>
-          Update
-        </button>
+        <div className="categories-item categories-inputs">
+          <input
+            type="text"
+            value={name}
+            placeholder="Category name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button onClick={() => dispatch(updateCategory({ name }, id))}>
+            Update
+          </button>
 
-        <button onClick={() => dispatch(deleteCategory(id))}>Delete</button>
+          <button
+            onClick={() => dispatch(deleteCategory(id))}
+            className="delete-btn"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );
