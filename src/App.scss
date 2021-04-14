@@ -319,6 +319,56 @@ html {
 
 .categories {
   width: 100%;
+  .categories-item.categories-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 24px 0;
+    input,
+    button {
+      margin: 6px auto;
+      width: 489px;
+      height: 48px;
+    }
+    input {
+      font-size: 12px;
+      line-height: 24px;
+    }
+    .categories-inputs-radio {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // flex-direction: column;
+      width: 489px;
+      margin: 24px 0;
+
+      div {
+        margin: 6px auto;
+
+        // display: flex;
+        // align-items: center;
+
+        input {
+          width: initial;
+          height: initial;
+        }
+        label {
+          margin-left: 10px;
+          color: #000;
+        }
+      }
+    }
+  }
+  .categories-item {
+    .category {
+      padding: 4px;
+      &:hover {
+        border: none;
+        padding: 4px;
+      }
+    }
+  }
   .categories-list {
     // display: grid;
     // grid-template-columns: repeat(4, 1fr);
@@ -329,6 +379,7 @@ html {
 
     .categories-item {
       padding: 24px;
+
       .category {
         padding: 4px;
         &:hover {
@@ -408,6 +459,7 @@ html {
 }
 
 .wallets {
+  width: 100%;
   .wallets-list {
     // display: grid;
     // grid-template-columns: repeat(3, 1fr);
@@ -495,6 +547,39 @@ html {
             }
           }
         }
+      }
+    }
+  }
+  .wallets-item {
+    &.wallets-inputs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 24px 0;
+      input,
+      button {
+        margin: 6px auto;
+        width: 489px;
+        height: 48px;
+      }
+      input {
+        font-size: 12px;
+        line-height: 24px;
+      }
+      .wallet {
+        padding: 4px;
+        &:hover {
+          border: none;
+          padding: 4px;
+        }
+      }
+    }
+    .wallet {
+      padding: 4px;
+      &:hover {
+        border: none;
+        padding: 4px;
       }
     }
   }

@@ -2,58 +2,91 @@
 import React, { useState } from "react";
 
 import { createWallet } from "../store/wallets/actions";
+import { CardLogo, Logo24 } from "../components/icons";
 import { useDispatch } from "react-redux";
 
 export default function CreateWallet() {
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [balance, setBalance] = useState(0);
+  // const [type, setType] = useState("");
+  const [balance, setBalance] = useState();
   const dispatch = useDispatch();
 
-  const onTypeChangeHandler = (e) => {
-    setType(e.target.value);
-  };
+  // const onTypeChangeHandler = (e) => {
+  //   setType(e.target.value);
+  // };
 
-  const types = [
-    { name: "Cash", value: "cash" },
-    { name: "Card", value: "card" },
-  ];
-  let typesInputList = types.map((item, idx) => (
-    <input
-      type="radio"
-      key={idx}
-      name="type"
-      id={`wallet-type-${item.value}`}
-      value={item.value}
-      onChange={onTypeChangeHandler}
-    />
-  ));
+  // const types = [
+  //   { name: "Cash", value: "cash" },
+  //   { name: "Card", value: "card" },
+  // ];
+  // let typesInputList = types.map((item, idx) => (
+  //   <input
+  //     type="radio"
+  //     key={idx}
+  //     name="type"
+  //     id={`wallet-type-${item.value}`}
+  //     value={item.value}
+  //     onChange={onTypeChangeHandler}
+  //   />
+  // ));
 
   return (
     <div className="wallets">
       <div className="wallets-item">
         <div className="wallet">
-          <div className="wallet-name">
-            <p>{name}</p>
+          <div className="wallet-inner">
+            <div className="wallet-header">
+              <div className="wallet-label">
+                <Logo24 />
+                <span>xWallet</span>
+              </div>
+              <div className="wallet-logo">
+                <CardLogo />
+              </div>
+            </div>
+            <div className="wallet-body">
+              <div className="wallet-name">
+                <p className="wallet-name__title">Card name</p>
+                <p className="wallet-name__text">{name || "***"}</p>
+              </div>
+              <div className="wallet-balance">
+                <p className="wallet-balance__title">Balance</p>
+                <p className="wallet-balance__text">
+                  {balance
+                    ? balance
+                        .toString()
+                        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+                    : "0"}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <input
-        type="text"
-        value={name}
-        placeholder="wallet name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        value={balance}
-        placeholder="wallet balance"
-        onChange={(e) => setBalance(e.target.value)}
-      />
-      {typesInputList}
-      <button onClick={() => dispatch(createWallet({ name, type, balance }))}>
-        Create
-      </button>
+      <div className="wallets-item wallets-inputs">
+        <input
+          type="text"
+          value={name}
+          placeholder="Card name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={balance}
+          placeholder="Balance"
+          onChange={(e) => setBalance(e.target.value)}
+        />
+        {/* {typesInputList} */}
+        <button
+          onClick={() =>
+            dispatch(
+              createWallet({ name, type: "card", balance: balance || 0 })
+            )
+          }
+        >
+          Create
+        </button>
+      </div>
     </div>
   );
 }
