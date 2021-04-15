@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 
 import { createWallet } from "../store/wallets/actions";
 import { CardLogo, Logo24 } from "../components/icons";
+import { PageTitle } from "../components";
 
 const TITLE = "Create Wallet - xWallet";
 
@@ -38,6 +39,8 @@ export default function CreateWallet() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Create wallet" goBack={true} />
+
       <div className="wallets page-content">
         <div className="wallets-item">
           <div className="wallet">

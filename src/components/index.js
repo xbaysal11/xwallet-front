@@ -1,6 +1,7 @@
 //CONTAINER
 import Container from "./Container/";
 import Layout from "./Layout";
+import PageTitle from "./PageTitle";
 
 // SIDEBAR
 import Sidebar from "./Sidebar/";
@@ -24,6 +25,7 @@ import CreateExpInc from "./CreateExpInc";
 import CreateTransfer from "./CreateTransfer";
 
 export {
+  PageTitle,
   Container,
   Layout,
   Sidebar,

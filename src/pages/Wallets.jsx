@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { RotateSpinner } from "react-spinners-kit";
 import { useSelector, useDispatch } from "react-redux";
 
-import { WalletsItem } from "../components";
+import { WalletsItem, PageTitle } from "../components";
 import { getWallets } from "./../store/wallets/actions";
 import { statuses } from "./../config";
 import { CardLogo, Logo24, PlusIcon } from "../components/icons";
@@ -70,10 +70,9 @@ export default function Wallets() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="wallets page-content">
-        <h2>Wallets</h2>
-        {content}
-      </div>
+      <PageTitle title="Wallets" goBack={true} />
+
+      <div className="wallets page-content">{content}</div>
     </>
   );
 }

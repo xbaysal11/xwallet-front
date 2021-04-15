@@ -9,8 +9,9 @@ import {
   updateCategory,
   deleteCategory,
 } from "../store/categories/actions";
+import { PageTitle } from "../components";
 
-const TITLE = "Update Category - xWallet";
+const TITLE = "Edit Category - xWallet";
 
 export default function UpdateCategory() {
   const dispatch = useDispatch();
@@ -30,6 +31,8 @@ export default function UpdateCategory() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Edit category" goBack={true} />
+
       <div className="categories page-content">
         <div className="categories-item">
           <div className="category">

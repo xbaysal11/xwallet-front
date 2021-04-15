@@ -7,7 +7,13 @@ import { Helmet } from "react-helmet";
 
 import "react-tabs/style/react-tabs.css";
 import { statuses } from "./../config";
-import { ExpenseTab, IncomeTab, TransferTab, Carousel } from "../components";
+import {
+  ExpenseTab,
+  IncomeTab,
+  TransferTab,
+  Carousel,
+  PageTitle,
+} from "../components";
 import { Up, Down, UpDown } from "../components/icons";
 import { getWallets } from "../store/wallets/actions";
 
@@ -52,6 +58,8 @@ export default function Home() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Home" goBack={true} />
+
       <div className="home page-content">
         <div className="home-header">
           <div className="home-header-inner">

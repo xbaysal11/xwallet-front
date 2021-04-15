@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
 
+import { PageTitle } from "../components";
 import { createCategory } from "./../store/categories/actions";
 
 const TITLE = "Create Category - xWallet";
@@ -42,6 +43,8 @@ export default function CreateCategory() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Create category" goBack={true} />
+
       <div className="categories page-content">
         <div className="categories-item">
           <div className="category">

@@ -10,8 +10,9 @@ import {
   updateMoneyOperation,
   deleteMoneyOperation,
 } from "../store/moneyOperations/actions";
+import { PageTitle } from "../components";
 
-const TITLE = "Update Money Operation - xWallet";
+const TITLE = "Edit Money Operation - xWallet";
 
 export default function UpdateMoneyOperation() {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ export default function UpdateMoneyOperation() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Edit money operation" goBack={true} />
+
       <div className="categories page-content">
         <div className="categories-item">
           <div className="money_operation">

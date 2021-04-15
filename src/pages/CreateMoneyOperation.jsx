@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import "react-tabs/style/react-tabs.css";
 import { Up, Down, UpDown } from "../components/icons";
-import { CreateTransfer, CreateExpInc } from "../components";
+import { CreateTransfer, CreateExpInc, PageTitle } from "../components";
 
 const TITLE = "Create Money Operation - xWallet";
 
@@ -15,6 +15,8 @@ export default function CreateMoneyOperation() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Create money operation" goBack={true} />
+
       <div className="page-content">
         <Tabs>
           <TabList>

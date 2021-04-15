@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { CategoriesItem } from "../components";
+import { CategoriesItem, PageTitle } from "../components";
 import { getCategories } from "./../store/categories/actions";
 import { statuses } from "./../config";
 import { PlusIcon } from "../components/icons";
@@ -60,10 +60,8 @@ export default function Categories() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
-      <div className="categories page-content">
-        <h2>Categories</h2>
-        {content}
-      </div>
+      <PageTitle title="Categories" goBack={true} />
+      <div className="categories page-content">{content}</div>
     </>
   );
 }

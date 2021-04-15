@@ -9,9 +9,10 @@ import {
   updateWallet,
   deleteWallet,
 } from "../store/wallets/actions";
+import { PageTitle } from "../components";
 import { CardLogo, Logo24 } from "../components/icons";
 
-const TITLE = "Update Wallet - xWallet";
+const TITLE = "Edit Wallet - xWallet";
 
 export default function UpdateWallet() {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ export default function UpdateWallet() {
       <Helmet>
         <title>{TITLE}</title>
       </Helmet>
+      <PageTitle title="Edit wallet" goBack={true} />
+
       <div className="wallets page-content">
         <div className="wallets-item">
           <div className="wallet">
