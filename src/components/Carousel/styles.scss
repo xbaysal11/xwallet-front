@@ -9,6 +9,20 @@
   position: relative;
   display: flex;
   align-items: center;
+  a {
+    width: 258px;
+
+    .wallets-item {
+      width: fit-content;
+      margin: auto;
+      .wallet {
+        &:hover {
+          border: none;
+          padding: 4px;
+        }
+      }
+    }
+  }
 }
 #carousel-inner {
   height: 220px;
@@ -237,4 +251,22 @@ $margin-top3: 40px;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .level-1,
+  .level-2,
+  .level1,
+  .level2 {
+    display: none;
+  }
+
+  .level0 {
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 80%;
+    height: 90%;
+    padding-top: 36px;
+  }
 }

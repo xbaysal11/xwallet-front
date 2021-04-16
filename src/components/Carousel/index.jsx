@@ -3,15 +3,17 @@ import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import CardCarouselItem from "../CardCarouselItem";
 import CategoryCarouselItem from "../CategoryCarouselItem";
 import PT from "prop-types";
-import "./styles.scss";
+import { Link } from "react-router-dom";
 
-import { Right, Left } from "../icons/";
+import "./styles.scss";
+import { Right, Left, CardLogo, Logo24, PlusIcon } from "../icons/";
 
 export default class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: this.props.items,
+      // items: this.props.items.length ? this.props.items : [{ id: 1, name: "" }],
       active: this.props.active,
       direction: "",
     };
@@ -30,8 +32,10 @@ export default class Carousel extends Component {
     let items = [];
     let level;
     console.log(this.state.active + 1);
-    console.log(this.state.items[this.state.active].id);
-    this.props.onChange(this.state.items[this.state.active].id);
+    this.props.onChange(
+      this.state.items[this.state.active] &&
+        this.state.items[this.state.active].id
+    );
 
     for (let i = this.state.active - 1; i < this.state.active + 2; i++) {
       let index = i;
@@ -45,7 +49,7 @@ export default class Carousel extends Component {
         items.push(
           <CategoryCarouselItem
             key={index}
-            id={this.state.items[index].name}
+            id={this.state.items[index] && this.state.items[index].name}
             level={level}
             data={this.state.items[index]}
           />
@@ -54,7 +58,7 @@ export default class Carousel extends Component {
         items.push(
           <CardCarouselItem
             key={index}
-            id={this.state.items[index].name}
+            id={this.state.items[index] ? this.state.items[index].name : 0}
             level={level}
             data={this.state.items[index]}
           />
@@ -88,9 +92,36 @@ export default class Carousel extends Component {
           <Left />
         </div>
         <div id="carousel-inner">
-          <ReactCSSTransitionGroup transitionName={this.state.direction}>
-            {this.generateItems()}
-          </ReactCSSTransitionGroup>
+          {this.state.items.length > 0 ? (
+            <ReactCSSTransitionGroup transitionName={this.state.direction}>
+              {this.generateItems()}
+            </ReactCSSTransitionGroup>
+          ) : (
+            <ReactCSSTransitionGroup transitionName={this.state.direction}>
+              <Link to="/wallets/create-wallet">
+                <div className="wallets-item">
+                  <div className="wallet">
+                    <div className="wallet-inner">
+                      <div className="wallet-header">
+                        <div className="wallet-label">
+                          <Logo24 />
+                          <span>xWallet</span>
+                        </div>
+                        <div className="wallet-logo">
+                          <CardLogo />
+                        </div>
+                      </div>
+                      <div className="wallet-body">
+                        <div className="plus-container">
+                          <PlusIcon />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </ReactCSSTransitionGroup>
+          )}
         </div>
         <div className="arrow arrow-right" onClick={this.rightClick}>
           <Right />

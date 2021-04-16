@@ -23,9 +23,9 @@ export default class CategoryCarouselItem extends Component {
             <div className="category-name">
               <p>{this.props.id}</p>
             </div>
-            <div className="category-type">
-              <p>{this.props.data.type}</p>
-            </div>
+            {/* <div className="category-type">
+              <p>{this.props.data.name}</p>
+            </div> */}
           </div>
         </div>
       </div>
