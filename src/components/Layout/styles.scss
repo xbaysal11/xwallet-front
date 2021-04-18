@@ -11,6 +11,22 @@
     min-height: 100vh;
   }
 }
+.responsive-sidebar {
+  display: none;
+  input {
+    display: none;
+  }
+  label {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+  }
+}
 
 @media only screen and (max-width: 1024px) {
   .layout {
@@ -28,7 +44,7 @@
 
 @media only screen and (max-width: 600px) {
   .layout {
-    display: block;
+    display: flex;
     .layout__sidebar {
       display: none;
     }
@@ -36,6 +52,22 @@
       background: $main_background;
       width: 100vw;
       min-height: 100vh;
+      .layout__sidebar {
+        display: initial;
+        z-index: 1000;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .responsive-sidebar {
+    display: block;
+    &.open {
+      .sidebar {
+        transform: initial;
+        z-index: 1200;
+      }
     }
   }
 }

@@ -20,6 +20,8 @@ export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
     return (
       <Layout>
+        {/* <Sidebar /> */}
+
         <Container>
           <Switch>
             <Route exact path={"/"} component={Home} />
