@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { RotateSpinner } from "react-spinners-kit";
-
 import { useSelector, useDispatch } from "react-redux";
 import { Pie } from "react-chartjs-2";
 
@@ -15,8 +14,6 @@ import { Up, Down } from "../components/icons";
 const TITLE = "Reports - xWallet";
 
 export default function Reports() {
-  // const [walletId, setWalletId] = useState("");
-
   const store = useSelector((store) => store);
   const dispatch = useDispatch();
 
@@ -74,22 +71,7 @@ export default function Reports() {
   wallets.status === statuses.SUCCESS
     ? (content = (
         <div>
-          <div className="home-header">
-            <div className="home-header-inner">
-              <div className="home-header-left">
-                <h3>Your total balance:</h3>
-              </div>
-              <div className="home-header-right">
-                <h1>
-                  {store.wallets.wallets.wallets.total &&
-                    store.wallets.wallets.wallets.total
-                      .toString()
-                      .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
-                </h1>
-              </div>
-            </div>
-          </div>
-          <Pie data={data} options={options} width={350} height={50} />
+          <Pie data={data} options={options} width={500} height={350} />
         </div>
       ))
     : wallets.status === statuses.LOADING
@@ -120,15 +102,35 @@ export default function Reports() {
         <title>{TITLE}</title>
       </Helmet>
       <PageTitle title="Reports" goBack={true} />
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Amount</th>
-        </tr>
-        {tableData}
-      </table>
-      <div className="home page-content">
-        <div>{content}</div>
+
+      <div className="reports page-content">
+        <div className="home">
+          <div className="home-header">
+            <div className="home-header-inner">
+              <div className="home-header-left">
+                <h3>Your total balance:</h3>
+              </div>
+              <div className="home-header-right">
+                <h1>
+                  {store.wallets.wallets.wallets.total &&
+                    store.wallets.wallets.wallets.total
+                      .toString()
+                      .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="reports-header">
+          <table>
+            <tr>
+              <th>Wallet</th>
+              <th>Balance</th>
+            </tr>
+            {tableData}
+          </table>
+          <div>{content}</div>
+        </div>
 
         <Tabs>
           <TabList>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import PT from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { Line } from "react-chartjs-2";
@@ -7,11 +6,12 @@ import moment from "moment";
 
 import { getMoneyOperations } from "../../store/moneyOperations/actions";
 import { getCategories } from "../../store/categories/actions";
-// import { statuses } from "../../config";
+
 ReportsTables.propTypes = {
   type: PT.number,
   label: PT.string,
 };
+
 export default function ReportsTables(props) {
   const { label, type } = props;
   const store = useSelector((store) => store);
@@ -393,7 +393,7 @@ export default function ReportsTables(props) {
           month_2.total,
           month_1.total,
         ],
-
+        backgroundColor: "#6d9eeb",
         borderWidth: 1,
       },
     ],
@@ -423,162 +423,171 @@ export default function ReportsTables(props) {
   }
 
   return (
-    <div>
-      <h1>expense</h1>
-      <Line data={data1} options={options} width={150} height={50} />
+    <div className="charts">
+      <div className="charts-graph">
+        <Line data={data1} options={options} width={150} height={50} />
+      </div>
+      <div className="charts-table">
+        <table>
+          <tr>
+            <th>Month</th>
+            <th>Amount</th>
+          </tr>
+          {tableData}
+        </table>
+      </div>
 
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Amount</th>
-        </tr>
-        {tableData}
-      </table>
-
-      <table>
-        <tr>
-          <th>{months[11].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_1.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[10].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_2.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[9].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_3.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[8].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_4.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[7].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_5.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[6].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_6.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[5].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_7.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[4].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_8.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[3].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_9.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[2].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_10.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[1].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_11.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
-      <table>
-        <tr>
-          <th>{months[0].name}</th>
-          <th>Amount</th>
-        </tr>
-        {month_12.categories.map((item, idx) => (
-          <tr key={idx}>
-            <td>{item.name}</td>
-            <td>{item.amount}</td>
-          </tr>
-        ))}
-      </table>
+      <div className="charts-monthly-table">
+        <div className="charts-monthly-table-title">
+          <h3>Monthly:</h3>
+        </div>
+        <div className="charts-monthly-table-body">
+          <table>
+            <tr>
+              <th>{months[11].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_1.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[10].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_2.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[9].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_3.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[8].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_4.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[7].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_5.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[6].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_6.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[5].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_7.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[4].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_8.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[3].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_9.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[2].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_10.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[1].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_11.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+          <table>
+            <tr>
+              <th>{months[0].name}</th>
+              <th>Amount</th>
+            </tr>
+            {month_12.categories.map((item, idx) => (
+              <tr key={idx}>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+              </tr>
+            ))}
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

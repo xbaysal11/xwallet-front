@@ -941,22 +941,89 @@ input {
 }
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  color: #000;
 }
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid #878787;
   text-align: left;
   padding: 8px;
 }
-
-tr:nth-child(even) {
-  background-color: #dddddd;
+th {
+  background-color: #6d9eeb;
 }
 
+tr {
+  background-color: #c3d4f1;
+}
+td {
+  &:last-child {
+    text-align: right;
+    width: 150px;
+  }
+}
+.reports {
+  .reports-header {
+    display: flex;
+    margin: 36px 0;
+  }
+}
+
+.charts {
+  .charts-graph {
+    margin: 12px 0;
+  }
+  .charts-table {
+    margin: 36px 0;
+  }
+  .charts-monthly-table {
+    .charts-monthly-table-title {
+      h3 {
+        color: #000;
+      }
+    }
+    .charts-monthly-table-body {
+      display: flex;
+      flex-wrap: wrap;
+
+      justify-content: center;
+      align-items: center;
+
+      table {
+        // width: fit-content;
+        width: 30%;
+        margin: 12px 12px;
+        // flex-basis: 30%;
+        &:first-child {
+          th {
+            background-color: #b6d7a8;
+          }
+
+          tr {
+            background-color: #d9ead3;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .reports {
+    .reports-header {
+      display: flex;
+      margin: 36px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      * {
+        margin: 12px 0;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
   /* For tablets: */
 
@@ -1230,7 +1297,62 @@ tr:nth-child(even) {
       }
     }
   }
+  .reports {
+    .reports-header {
+      display: flex;
+      margin: 36px 0;
+      flex-wrap: wrap;
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  }
+
+  .charts {
+    .charts-graph {
+      margin: 12px 0;
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+    .charts-table {
+      margin: 36px 0;
+    }
+    .charts-monthly-table {
+      .charts-monthly-table-title {
+        h3 {
+          color: #000;
+        }
+      }
+      .charts-monthly-table-body {
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        align-items: center;
+
+        table {
+          // width: fit-content;
+          width: 100%;
+          margin: 12px 12px;
+          // flex-basis: 30%;
+          &:first-child {
+            th {
+              background-color: #b6d7a8;
+            }
+
+            tr {
+              background-color: #d9ead3;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
 @media only screen and (max-width: 450px) {
   .money_operation {
     width: 100%;
