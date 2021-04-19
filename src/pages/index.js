@@ -11,6 +11,7 @@ import CreateWallet from "./CreateWallet";
 import UpdateWallet from "./UpdateWallet";
 import CreateMoneyOperation from "./CreateMoneyOperation";
 import UpdateMoneyOperation from "./UpdateMoneyOperation";
+import Reports from "./Reports";
 
 export {
   // LOGIN
@@ -25,4 +26,5 @@ export {
   UpdateWallet,
   CreateMoneyOperation,
   UpdateMoneyOperation,
+  Reports,
 };

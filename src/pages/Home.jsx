@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RotateSpinner } from "react-spinners-kit";
 import { Helmet } from "react-helmet";
 
-import "react-tabs/style/react-tabs.css";
 import { statuses } from "./../config";
 import {
   ExpenseTab,

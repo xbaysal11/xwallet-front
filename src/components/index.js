@@ -24,7 +24,10 @@ import Carousel from "./Carousel";
 import CreateExpInc from "./CreateExpInc";
 import CreateTransfer from "./CreateTransfer";
 
+import ReportsTables from "./ReportsTables";
+
 export {
+  ReportsTables,
   PageTitle,
   Container,
   Layout,

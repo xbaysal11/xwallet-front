@@ -12,6 +12,7 @@ import {
   UpdateWallet,
   CreateMoneyOperation,
   UpdateMoneyOperation,
+  Reports,
 } from "./pages";
 import { Container, Layout } from "./components";
 import { PlusIcon } from "./components/icons";
@@ -49,6 +50,7 @@ export const useRoutes = (isAuthenticated) => {
               component={CreateCategory}
             />
             <Route exact path={"/categories/:id"} component={UpdateCategory} />
+            <Route exact path={"/reports"} component={Reports} />
             <Redirect to={"/"} />
           </Switch>
         </Container>

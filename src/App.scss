@@ -940,6 +940,23 @@ input {
   padding: 36px;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 @media only screen and (max-width: 600px) {
   /* For tablets: */
 
@@ -1355,13 +1372,13 @@ input {
         // flex-direction: column;
         width: 489px;
         margin: 24px 0;
-  
+
         div {
           margin: 6px auto;
-  
+
           // display: flex;
           // align-items: center;
-  
+
           input {
             width: initial;
             height: initial;
@@ -1389,10 +1406,10 @@ input {
       display: flex;
       flex-wrap: wrap;
       margin: auto;
-  
+
       .categories-item {
         padding: 24px;
-  
+
         .category {
           padding: 4px;
           &:hover {
@@ -1492,7 +1509,7 @@ input {
       justify-content: center;
       flex-direction: column;
       margin: auto;
-  
+
       .wallet-header {
         display: flex;
         align-items: center;
@@ -1505,7 +1522,7 @@ input {
             font-weight: bold;
             font-size: 14px;
             line-height: 16px;
-  
+
             color: #ffffff;
           }
         }
@@ -1522,14 +1539,14 @@ input {
             font-weight: bold;
             font-size: 12px;
             line-height: 16px;
-  
+
             color: #ffffff;
           }
           .wallet-name__text {
             font-weight: bold;
             font-size: 14px;
             line-height: 27px;
-  
+
             color: #ffffff;
           }
         }
@@ -1538,14 +1555,14 @@ input {
             font-weight: bold;
             font-size: 12px;
             line-height: 16px;
-  
+
             color: #ffffff;
           }
           .wallet-balance__text {
             font-weight: bold;
             font-size: 14px;
             line-height: 27px;
-  
+
             color: #ffffff;
           }
         }

@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import "react-tabs/style/react-tabs.css";
 
 import { useRoutes } from "./routes";
 import ScrollToTop from "./ScrollToTop";
