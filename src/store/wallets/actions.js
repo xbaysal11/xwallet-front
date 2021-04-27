@@ -28,7 +28,9 @@ export const getWallets = ({ filters = {} } = {}) => async (dispatch) => {
     });
 };
 
-export const createWallet = (values) => async () => {
+export const createWallet = (values) => async (dispatch) => {
+  dispatch(getWalletsRequest());
+
   let data = {
     name: values.name,
     type: values.type,
@@ -41,6 +43,7 @@ export const createWallet = (values) => async () => {
         toast.error(res.data, toastOption);
       }
       toast.success("Successfully added !", toastOption);
+      dispatch(getWalletsSuccess(res.data));
       return res.data;
     })
     .catch((error) => {
@@ -52,6 +55,7 @@ export const createWallet = (values) => async () => {
       } else {
         toast.error("Error when adding !", toastOption);
       }
+      dispatch(getWalletsFailure(error));
       return error;
     });
 };

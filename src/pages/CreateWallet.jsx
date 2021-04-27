@@ -6,14 +6,16 @@ import { useDispatch } from "react-redux";
 import { createWallet } from "../store/wallets/actions";
 import { CardLogo, Logo24 } from "../components/icons";
 import { PageTitle } from "../components";
+// import { statuses } from "../config";
 
 const TITLE = "Create Wallet - xWallet";
 
 export default function CreateWallet() {
   const [name, setName] = useState("");
-  // const [type, setType] = useState("");
+  const [disableButton, setDisableButton] = useState(false);
   const [balance, setBalance] = useState();
   const dispatch = useDispatch();
+  // const store = useSelector((store) => store);
 
   // const onTypeChangeHandler = (e) => {
   //   setType(e.target.value);
@@ -88,11 +90,19 @@ export default function CreateWallet() {
           />
           {/* {typesInputList} */}
           <button
-            onClick={() =>
+            onClick={() => {
+              setDisableButton(true);
+
               dispatch(
                 createWallet({ name, type: "card", balance: balance || 0 })
-              )
-            }
+              );
+              setTimeout(() => {
+                setDisableButton(false);
+                setName("");
+                setBalance(undefined);
+              }, 1000);
+            }}
+            disabled={disableButton}
           >
             Create
           </button>

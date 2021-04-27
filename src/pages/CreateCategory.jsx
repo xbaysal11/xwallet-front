@@ -12,6 +12,7 @@ export default function CreateCategory() {
   const [name, setName] = useState("");
   const [typeName, setTypeName] = useState("Expense");
   const [type, setType] = useState(1);
+  const [disableButton, setDisableButton] = useState(false);
   const dispatch = useDispatch();
   const types = [
     { name: "Expense", value: 1 },
@@ -66,7 +67,17 @@ export default function CreateCategory() {
             onChange={(e) => setName(e.target.value)}
           />
           <div className="categories-inputs-radio">{typesInputList}</div>
-          <button onClick={() => dispatch(createCategory({ name, type }))}>
+          <button
+            onClick={() => {
+              setDisableButton(true);
+              dispatch(createCategory({ name, type }));
+              setTimeout(() => {
+                setDisableButton(false);
+                setName("");
+              }, 1000);
+            }}
+            disabled={disableButton}
+          >
             Create
           </button>
         </div>
